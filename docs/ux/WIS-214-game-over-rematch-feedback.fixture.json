@@ -1,0 +1,55 @@
+{
+  "version": "1.0.0",
+  "issue": "WIS-214",
+  "generatedAt": "2026-04-15",
+  "scope": "game_over_rematch_respawn_feedback_contract",
+  "timingMs": {
+    "eliminationImpact": 1200,
+    "eliminationActionsTimeout": 6000
+  },
+  "copy": {
+    "elimination": {
+      "headline": "Eliminated",
+      "helper": "You can spectate now or view results.",
+      "autoRouteCta": "View Results",
+      "actionOutcome": {
+        "VIEW_RESULTS": "Open results now to review final placement and leaderboard outcome.",
+        "VIEW_LEADERBOARD": "Open results now with leaderboard rows focused by placement.",
+        "SPECTATE": "Enter spectator mode and keep watching current match."
+      }
+    },
+    "postMatch": {
+      "guidance": "Choose your next step. You can rematch now or leave the room.",
+      "blockedGuidance": "Acknowledge leaderboard sync warning first. Rematch and routing unlock immediately after acknowledgement.",
+      "actionOutcome": {
+        "REPLAY_MATCH": "Start rematch ready-check in same lobby and respawn all players when countdown begins.",
+        "BACK_TO_LOBBY": "Return to lobby roster without exiting current room.",
+        "EXIT_TO_MENU": "Leave room and clear rematch intent."
+      }
+    }
+  },
+  "acceptanceChecks": [
+    {
+      "id": "GO-ROUTE-01",
+      "assertion": "Elimination contract always exposes explicit helper copy and deterministic CTA outcome copy."
+    },
+    {
+      "id": "GO-ROUTE-02",
+      "assertion": "Manual elimination CTA selection cancels inactivity auto-route and preserves selected route."
+    },
+    {
+      "id": "GO-ROUTE-03",
+      "assertion": "Post-match rematch/lobby/menu actions include explicit outcome guidance and blocked failure guidance."
+    }
+  ],
+  "evidenceTargets": {
+    "tests": [
+      "tests/wis214-game-over-feedback-contract.test.ts",
+      "tests/flow-state-contract.test.ts"
+    ],
+    "implementation": [
+      "src/ux/wis214-game-over-feedback-contract.ts",
+      "src/core/session-manager.ts"
+    ]
+  }
+}

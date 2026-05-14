@@ -1,0 +1,1245 @@
+{
+  "issue": "WIS-448",
+  "generatedAt": "2026-04-22T09:36:25.408Z",
+  "transportBaseUrl": "http://127.0.0.1:64442",
+  "commandRecipe": [
+    "node --import tsx scripts/generate-wis-448-evidence.ts",
+    "npm test -- tests/http-room-transport.test.ts tests/wis212-hud-readability-contract.test.ts tests/wis216-accessibility-baseline-contract.test.ts tests/wis97-critical-microcopy-lock.test.ts"
+  ],
+  "scenarios": [
+    {
+      "surface": "desktop",
+      "controlModel": "keyboard_like",
+      "roomId": "wis-448-desktop-mo9uym9t",
+      "targetPlayerId": "desktop-human",
+      "opponentPlayerId": "desktop-bot",
+      "commands": [
+        "POST /v1/rooms {sessionId:wis-448-desktop-mo9uym9t}",
+        "POST /v1/rooms/wis-448-desktop-mo9uym9t/players {playerId:desktop-human}",
+        "POST /v1/rooms/wis-448-desktop-mo9uym9t/players {playerId:desktop-bot}",
+        "repeat: flow-state -> input(target) -> flow-state -> input(opponent) -> flow-state -> advance",
+        "POST /v1/rooms/wis-448-desktop-mo9uym9t/complete"
+      ],
+      "ticks": [
+        {
+          "tick": 1,
+          "phase": "in_round",
+          "groundHeight": 0.051,
+          "groundSpeedMultiplier": 1.024,
+          "target": {
+            "rank": "#2/2",
+            "score": 49,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.02",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 51,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.02",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 2,
+          "phase": "in_round",
+          "groundHeight": 0.104,
+          "groundSpeedMultiplier": 1.048,
+          "target": {
+            "rank": "#2/2",
+            "score": 50,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.05",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 52,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.05",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 3,
+          "phase": "in_round",
+          "groundHeight": 0.157,
+          "groundSpeedMultiplier": 1.072,
+          "target": {
+            "rank": "#2/2",
+            "score": 51,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.07",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 53,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.07",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 4,
+          "phase": "in_round",
+          "groundHeight": 0.212,
+          "groundSpeedMultiplier": 1.096,
+          "target": {
+            "rank": "#2/2",
+            "score": 52,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.1",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 54,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.1",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 5,
+          "phase": "in_round",
+          "groundHeight": 0.268,
+          "groundSpeedMultiplier": 1.12,
+          "target": {
+            "rank": "#2/2",
+            "score": 52,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.12",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 54,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.12",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 6,
+          "phase": "in_round",
+          "groundHeight": 0.325,
+          "groundSpeedMultiplier": 1.144,
+          "target": {
+            "rank": "#2/2",
+            "score": 53,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.14",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 55,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.14",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 7,
+          "phase": "in_round",
+          "groundHeight": 0.384,
+          "groundSpeedMultiplier": 1.168,
+          "target": {
+            "rank": "#2/2",
+            "score": 54,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.17",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 56,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.17",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 8,
+          "phase": "in_round",
+          "groundHeight": 0.443,
+          "groundSpeedMultiplier": 1.192,
+          "target": {
+            "rank": "#2/2",
+            "score": 54,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.19",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 56,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.19",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 9,
+          "phase": "in_round",
+          "groundHeight": 0.504,
+          "groundSpeedMultiplier": 1.216,
+          "target": {
+            "rank": "#2/2",
+            "score": 55,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.22",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 57,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.22",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 10,
+          "phase": "in_round",
+          "groundHeight": 0.566,
+          "groundSpeedMultiplier": 1.24,
+          "target": {
+            "rank": "#2/2",
+            "score": 55,
+            "survivalTime": "00:01",
+            "groundSpeed": "x1.24",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 58,
+            "survivalTime": "00:01",
+            "groundSpeed": "x1.24",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 11,
+          "phase": "in_round",
+          "groundHeight": 0.629,
+          "groundSpeedMultiplier": 1.264,
+          "target": {
+            "rank": "#2/2",
+            "score": 55,
+            "survivalTime": "00:01",
+            "groundSpeed": "x1.26",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 58,
+            "survivalTime": "00:01",
+            "groundSpeed": "x1.26",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 12,
+          "phase": "in_round",
+          "groundHeight": 0.694,
+          "groundSpeedMultiplier": 1.288,
+          "target": {
+            "rank": "#2/2",
+            "score": 56,
+            "survivalTime": "00:01",
+            "groundSpeed": "x1.29",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 58,
+            "survivalTime": "00:01",
+            "groundSpeed": "x1.29",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 13,
+          "phase": "in_round",
+          "groundHeight": 0.759,
+          "groundSpeedMultiplier": 1.312,
+          "target": {
+            "rank": "#2/2",
+            "score": 56,
+            "survivalTime": "00:01",
+            "groundSpeed": "x1.31",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 59,
+            "survivalTime": "00:01",
+            "groundSpeed": "x1.31",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 14,
+          "phase": "in_round",
+          "groundHeight": 0.826,
+          "groundSpeedMultiplier": 1.336,
+          "target": {
+            "rank": "#2/2",
+            "score": 56,
+            "survivalTime": "00:01",
+            "groundSpeed": "x1.34",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 59,
+            "survivalTime": "00:01",
+            "groundSpeed": "x1.34",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        }
+      ],
+      "finalStandings": [
+        {
+          "rank": 1,
+          "playerId": "desktop-bot",
+          "score": 59,
+          "placementToken": "1",
+          "updatedAt": 1411
+        },
+        {
+          "rank": 2,
+          "playerId": "desktop-human",
+          "score": 56,
+          "placementToken": "2",
+          "updatedAt": 1411
+        }
+      ],
+      "globalLeaderboardTop": [
+        {
+          "rank": 1,
+          "playerId": "desktop-bot",
+          "score": 59,
+          "updatedAt": 1411
+        },
+        {
+          "rank": 2,
+          "playerId": "desktop-human",
+          "score": 56,
+          "updatedAt": 1411
+        }
+      ],
+      "checks": {
+        "roundCompletes": true,
+        "liveLeaderboardUpdatesObserved": true,
+        "leaderboardLegibilityFieldsPresent": true,
+        "surfaceVisibilityPresent": true,
+        "accessibilitySmokePresent": true
+      }
+    },
+    {
+      "surface": "mobile",
+      "controlModel": "touch_tap",
+      "roomId": "wis-448-mobile-mo9uymc9",
+      "targetPlayerId": "mobile-touch",
+      "opponentPlayerId": "mobile-bot",
+      "commands": [
+        "POST /v1/rooms {sessionId:wis-448-mobile-mo9uymc9}",
+        "POST /v1/rooms/wis-448-mobile-mo9uymc9/players {playerId:mobile-touch}",
+        "POST /v1/rooms/wis-448-mobile-mo9uymc9/players {playerId:mobile-bot}",
+        "repeat: flow-state -> input(target) -> flow-state -> input(opponent) -> flow-state -> advance",
+        "POST /v1/rooms/wis-448-mobile-mo9uymc9/complete"
+      ],
+      "ticks": [
+        {
+          "tick": 1,
+          "phase": "in_round",
+          "groundHeight": 0.051,
+          "groundSpeedMultiplier": 1.024,
+          "target": {
+            "rank": "#2/2",
+            "score": 49,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.02",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 51,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.02",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 2,
+          "phase": "in_round",
+          "groundHeight": 0.104,
+          "groundSpeedMultiplier": 1.048,
+          "target": {
+            "rank": "#2/2",
+            "score": 50,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.05",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 52,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.05",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 3,
+          "phase": "in_round",
+          "groundHeight": 0.157,
+          "groundSpeedMultiplier": 1.072,
+          "target": {
+            "rank": "#2/2",
+            "score": 51,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.07",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 53,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.07",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 4,
+          "phase": "in_round",
+          "groundHeight": 0.212,
+          "groundSpeedMultiplier": 1.096,
+          "target": {
+            "rank": "#2/2",
+            "score": 52,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.1",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 54,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.1",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 5,
+          "phase": "in_round",
+          "groundHeight": 0.268,
+          "groundSpeedMultiplier": 1.12,
+          "target": {
+            "rank": "#2/2",
+            "score": 53,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.12",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 54,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.12",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 6,
+          "phase": "in_round",
+          "groundHeight": 0.325,
+          "groundSpeedMultiplier": 1.144,
+          "target": {
+            "rank": "#2/2",
+            "score": 54,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.14",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 55,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.14",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 7,
+          "phase": "in_round",
+          "groundHeight": 0.384,
+          "groundSpeedMultiplier": 1.168,
+          "target": {
+            "rank": "#2/2",
+            "score": 55,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.17",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 56,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.17",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 8,
+          "phase": "in_round",
+          "groundHeight": 0.443,
+          "groundSpeedMultiplier": 1.192,
+          "target": {
+            "rank": "#1/2",
+            "score": 56,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.19",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 56,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.19",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 9,
+          "phase": "in_round",
+          "groundHeight": 0.504,
+          "groundSpeedMultiplier": 1.216,
+          "target": {
+            "rank": "#1/2",
+            "score": 57,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.22",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 57,
+            "survivalTime": "00:00",
+            "groundSpeed": "x1.22",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 10,
+          "phase": "in_round",
+          "groundHeight": 0.566,
+          "groundSpeedMultiplier": 1.24,
+          "target": {
+            "rank": "#1/2",
+            "score": 58,
+            "survivalTime": "00:01",
+            "groundSpeed": "x1.24",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#1/2",
+            "score": 58,
+            "survivalTime": "00:01",
+            "groundSpeed": "x1.24",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 11,
+          "phase": "in_round",
+          "groundHeight": 0.629,
+          "groundSpeedMultiplier": 1.264,
+          "target": {
+            "rank": "#1/2",
+            "score": 59,
+            "survivalTime": "00:01",
+            "groundSpeed": "x1.26",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#2/2",
+            "score": 58,
+            "survivalTime": "00:01",
+            "groundSpeed": "x1.26",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 12,
+          "phase": "in_round",
+          "groundHeight": 0.694,
+          "groundSpeedMultiplier": 1.288,
+          "target": {
+            "rank": "#1/2",
+            "score": 60,
+            "survivalTime": "00:01",
+            "groundSpeed": "x1.29",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#2/2",
+            "score": 58,
+            "survivalTime": "00:01",
+            "groundSpeed": "x1.29",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 13,
+          "phase": "in_round",
+          "groundHeight": 0.759,
+          "groundSpeedMultiplier": 1.312,
+          "target": {
+            "rank": "#1/2",
+            "score": 61,
+            "survivalTime": "00:01",
+            "groundSpeed": "x1.31",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#2/2",
+            "score": 59,
+            "survivalTime": "00:01",
+            "groundSpeed": "x1.31",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        },
+        {
+          "tick": 14,
+          "phase": "in_round",
+          "groundHeight": 0.826,
+          "groundSpeedMultiplier": 1.336,
+          "target": {
+            "rank": "#1/2",
+            "score": 62,
+            "survivalTime": "00:01",
+            "groundSpeed": "x1.34",
+            "playersLeft": "2/2"
+          },
+          "opponent": {
+            "rank": "#2/2",
+            "score": 59,
+            "survivalTime": "00:01",
+            "groundSpeed": "x1.34",
+            "playersLeft": "2/2"
+          },
+          "risingGround": {
+            "state": "RG-NORMAL",
+            "copy": "Danger low. Keep climbing.",
+            "visibilityDesktop": "danger_rail",
+            "visibilityMobile": "compact_danger_row"
+          },
+          "accessibility": {
+            "hudAnnouncement": {
+              "politeness": "off",
+              "role": "none",
+              "ariaAtomic": false
+            },
+            "focusOrder": {
+              "eliminationActions": null,
+              "resultsActions": null,
+              "resultsFailureAlert": null
+            },
+            "acceptanceChecksCount": 4
+          }
+        }
+      ],
+      "finalStandings": [
+        {
+          "rank": 1,
+          "playerId": "mobile-touch",
+          "score": 62,
+          "placementToken": "1",
+          "updatedAt": 1411
+        },
+        {
+          "rank": 2,
+          "playerId": "desktop-bot",
+          "score": 59,
+          "placementToken": "T-2",
+          "updatedAt": 1411
+        },
+        {
+          "rank": 2,
+          "playerId": "mobile-bot",
+          "score": 59,
+          "placementToken": "T-2",
+          "updatedAt": 1411
+        },
+        {
+          "rank": 4,
+          "playerId": "desktop-human",
+          "score": 56,
+          "placementToken": "4",
+          "updatedAt": 1411
+        }
+      ],
+      "globalLeaderboardTop": [
+        {
+          "rank": 1,
+          "playerId": "mobile-touch",
+          "score": 62,
+          "updatedAt": 1411
+        },
+        {
+          "rank": 2,
+          "playerId": "desktop-bot",
+          "score": 59,
+          "updatedAt": 1411
+        },
+        {
+          "rank": 2,
+          "playerId": "mobile-bot",
+          "score": 59,
+          "updatedAt": 1411
+        },
+        {
+          "rank": 4,
+          "playerId": "desktop-human",
+          "score": 56,
+          "updatedAt": 1411
+        }
+      ],
+      "checks": {
+        "roundCompletes": true,
+        "liveLeaderboardUpdatesObserved": true,
+        "leaderboardLegibilityFieldsPresent": true,
+        "surfaceVisibilityPresent": true,
+        "accessibilitySmokePresent": true
+      }
+    }
+  ],
+  "crossSurfaceChecks": {
+    "bothRoundsComplete": true,
+    "bothShowLiveLeaderboardUpdates": true,
+    "bothPreserveSurfaceVisibilityContracts": true,
+    "bothCarryAccessibilitySmokeSignals": true
+  },
+  "residualRisks": [
+    "Evidence validates FE contract surface through transport + flow-state snapshots, not pixel-rendered browser screenshots.",
+    "Human control parity modeled via deterministic keyboard/tap input patterns through authenticated transport endpoints."
+  ]
+}

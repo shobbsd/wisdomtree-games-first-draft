@@ -1,0 +1,91 @@
+{
+  "issue": "WIS-447",
+  "runTimestampUtc": "2026-04-22T09:24:18Z",
+  "workspaceCommit": "c606883d65bba6b276cd22a11728a8860606d7b7",
+  "matrixDocPath": "docs/ux/WIS-447-playability-qa-matrix.md",
+  "matrixLogPath": "docs/ux/evidence/WIS-447-playability-qa-test-run.log",
+  "dependencySnapshot": [
+    {
+      "issue": "WIS-444",
+      "status": "done",
+      "evidenceCommentPath": "/WIS/issues/WIS-444#comment-9ae630ac-4883-4f3f-a22e-c4091d7c6666"
+    }
+  ],
+  "scenarioResults": [
+    {
+      "id": "LOOP-01",
+      "name": "terminal playable loop end-to-end",
+      "command": "PLAYABLE_AUTO=1 PLAYABLE_TICK_MS=50 PLAYABLE_MAX_TICKS=12 npm run play",
+      "status": "pass",
+      "evidenceSection": "playable_loop_auto"
+    },
+    {
+      "id": "RISE-01",
+      "name": "rising-ground speed progression stability",
+      "validation": "speed trace x1.01 -> x1.14, monotonic non-decreasing over 12 ticks",
+      "status": "pass",
+      "evidenceSection": "playable_loop_auto"
+    },
+    {
+      "id": "LB-01",
+      "name": "live + final leaderboard freshness/legibility",
+      "validation": "Live Standings emitted per tick and Global Leaderboard emitted post-round",
+      "status": "pass",
+      "evidenceSection": "playable_loop_auto"
+    },
+    {
+      "id": "A11Y-01",
+      "name": "accessibility + microcopy baseline contracts",
+      "command": "npm test -- tests/wis212-hud-readability-contract.test.ts tests/wis216-accessibility-baseline-contract.test.ts tests/wis97-critical-microcopy-lock.test.ts",
+      "status": "pass",
+      "testFilesPassed": 3,
+      "testsPassed": 7,
+      "testsFailed": 0,
+      "evidenceSection": "accessibility_contracts"
+    },
+    {
+      "id": "REG-01",
+      "name": "broad regression sanity",
+      "commands": [
+        "npm test",
+        "npm run build"
+      ],
+      "status": "pass",
+      "testFilesPassed": 17,
+      "testsPassed": 80,
+      "testsFailed": 0,
+      "evidenceSections": [
+        "full_regression_suite",
+        "build_gate"
+      ]
+    },
+    {
+      "id": "SURFACE-01",
+      "name": "desktop/mobile FE surface evidence",
+      "validation": "dependency closeout indicates terminal-first path only",
+      "status": "fail",
+      "severity": "blocker",
+      "evidencePath": "/WIS/issues/WIS-444#comment-9ae630ac-4883-4f3f-a22e-c4091d7c6666"
+    }
+  ],
+  "defectTriage": {
+    "blocker": [
+      {
+        "id": "B1",
+        "title": "Desktop/mobile playable FE evidence missing",
+        "impact": "Board-required desktop/mobile playability scope cannot be signed off.",
+        "ownerFollowUpIssue": "WIS-448"
+      }
+    ],
+    "polish": [],
+    "nonBlockingObservations": [
+      "npm emitted unknown env config warnings for auto-install-peers/recursive during verification runs."
+    ]
+  },
+  "gateDecision": {
+    "matrixStatus": "fail",
+    "releaseReadiness": "blocked_on_fe_surface_evidence",
+    "reason": "All terminal/runtime quality checks pass, but desktop/mobile FE playability evidence is absent.",
+    "followUpIssue": "WIS-448"
+  }
+}

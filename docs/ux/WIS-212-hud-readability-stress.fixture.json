@@ -1,0 +1,221 @@
+{
+  "version": "1.0.0",
+  "issue": "WIS-212",
+  "generatedAt": "2026-04-15",
+  "platforms": ["desktop", "mobile"],
+  "scope": "late_match_hud_readability_hardening",
+  "viewportProfiles": {
+    "desktop_min": {
+      "id": "desktop_min",
+      "widthPx": 1280,
+      "heightPx": 720,
+      "safeArea": {
+        "topPx": 0,
+        "rightPx": 0,
+        "bottomPx": 0,
+        "leftPx": 0
+      }
+    },
+    "mobile_min": {
+      "id": "mobile_min",
+      "widthPx": 390,
+      "heightPx": 844,
+      "safeArea": {
+        "topPx": 47,
+        "rightPx": 0,
+        "bottomPx": 34,
+        "leftPx": 0
+      }
+    }
+  },
+  "typographyLock": {
+    "alertHeadline": {
+      "fontSizePx": 24,
+      "lineHeightPx": 28,
+      "fontWeight": 700,
+      "letterSpacingPx": 0
+    },
+    "hudCriticalField": {
+      "fontSizePx": 20,
+      "lineHeightPx": 24,
+      "fontWeight": 700,
+      "letterSpacingPx": 0.2
+    },
+    "toastBody": {
+      "fontSizePx": 18,
+      "lineHeightPx": 22,
+      "fontWeight": 600,
+      "letterSpacingPx": 0.1
+    }
+  },
+  "spacingLock": {
+    "safeAreaTopGapPx": 8,
+    "horizontalPaddingPx": 16,
+    "laneGapPx": 12,
+    "alertLaneHeightPx": 72,
+    "hudLaneHeightPx": 88,
+    "toastLaneHeightPx": 52,
+    "hudFieldGapPx": 12,
+    "criticalFieldMinWidthPx": {
+      "placement": 104,
+      "rank": 104,
+      "survivalTime": 120
+    }
+  },
+  "deterministicStressScenarios": [
+    {
+      "id": "rank-churn-hazard-preemption-reconnect-replay",
+      "description": "Rapid rank churn is preempted by a P0 hazard, then queued reconnect/rank updates replay in deterministic order.",
+      "queueLimit": {
+        "p2MaxBuffered": 2
+      },
+      "events": [
+        {
+          "id": "rank-up-4",
+          "state": "in_run.hud_active",
+          "event": "rank_improved",
+          "priority": "P2",
+          "copy": "Rank Up: #4",
+          "nowMs": 0
+        },
+        {
+          "id": "rank-down-5",
+          "state": "in_run.hud_active",
+          "event": "rank_dropped",
+          "priority": "P2",
+          "copy": "Rank Down: #5",
+          "nowMs": 40
+        },
+        {
+          "id": "hazard-critical",
+          "state": "in_run.urgent_alert",
+          "event": "ground_speed_threshold_2",
+          "priority": "P0",
+          "copy": "Critical Rise Speed",
+          "nowMs": 80
+        },
+        {
+          "id": "reconnect-success",
+          "state": "in_run.hud_active",
+          "event": "reconnect_success_in_grace",
+          "priority": "P2",
+          "copy": "Reconnected",
+          "nowMs": 90
+        },
+        {
+          "id": "rank-up-3",
+          "state": "in_run.hud_active",
+          "event": "rank_improved",
+          "priority": "P2",
+          "copy": "Rank Up: #3",
+          "nowMs": 120
+        }
+      ],
+      "expected": {
+        "hazardStartedAtMs": 80,
+        "activeDuringBurst": "hazard-critical",
+        "queuedAfterBurst": ["reconnect-success", "rank-up-3"],
+        "replayOrder": ["reconnect-success", "rank-up-3"]
+      }
+    },
+    {
+      "id": "stacked-urgency-banner-with-rank-churn",
+      "description": "P1 urgency stacks under P0 hazard while rank churn continues; post-hazard replay preserves priority then FIFO ordering.",
+      "queueLimit": {
+        "p2MaxBuffered": 2
+      },
+      "events": [
+        {
+          "id": "rank-up-4",
+          "state": "in_run.hud_active",
+          "event": "rank_improved",
+          "priority": "P2",
+          "copy": "Rank Up: #4",
+          "nowMs": 0
+        },
+        {
+          "id": "rank-down-5",
+          "state": "in_run.hud_active",
+          "event": "rank_dropped",
+          "priority": "P2",
+          "copy": "Rank Down: #5",
+          "nowMs": 40
+        },
+        {
+          "id": "clearance-low",
+          "state": "in_run.warning_alert",
+          "event": "clearance_low_warning",
+          "priority": "P1",
+          "copy": "Low Clearance",
+          "nowMs": 60
+        },
+        {
+          "id": "hazard-critical",
+          "state": "in_run.urgent_alert",
+          "event": "ground_speed_threshold_2",
+          "priority": "P0",
+          "copy": "Critical Rise Speed",
+          "nowMs": 80
+        },
+        {
+          "id": "reconnect-success",
+          "state": "in_run.hud_active",
+          "event": "reconnect_success_in_grace",
+          "priority": "P2",
+          "copy": "Reconnected",
+          "nowMs": 90
+        },
+        {
+          "id": "rank-up-3",
+          "state": "in_run.hud_active",
+          "event": "rank_improved",
+          "priority": "P2",
+          "copy": "Rank Up: #3",
+          "nowMs": 120
+        }
+      ],
+      "expected": {
+        "hazardStartedAtMs": 80,
+        "activeDuringBurst": "hazard-critical",
+        "queuedAfterBurst": ["clearance-low", "reconnect-success", "rank-up-3"],
+        "replayOrder": ["clearance-low", "reconnect-success", "rank-up-3"]
+      }
+    }
+  ],
+  "acceptanceChecks": [
+    {
+      "id": "HUD-READ-01",
+      "assertion": "Critical alert lane never overlaps rank/survival HUD lane on desktop and mobile minimum viewports."
+    },
+    {
+      "id": "HUD-READ-02",
+      "assertion": "Toast lane remains below HUD critical fields and inside safe-area bounds at minimum viewport profiles."
+    },
+    {
+      "id": "HUD-READ-03",
+      "assertion": "Placement, rank, and survival fields fit locked min-width budget without truncation at minimum viewports."
+    },
+    {
+      "id": "HUD-READ-04",
+      "assertion": "Stacked urgency behavior stays deterministic: P0 hazard preempts P1 warning, then warning replays before queued P2 toasts."
+    },
+    {
+      "id": "HUD-READ-05",
+      "assertion": "Burst scenarios keep queue bounded to two newest P2 items while P0 hazard is active."
+    },
+    {
+      "id": "HUD-READ-06",
+      "assertion": "After hazard dwell ends, queued warning/reconnect/rank toasts replay in deterministic priority+FIFO order."
+    }
+  ],
+  "evidenceTargets": {
+    "tests": [
+      "tests/wis212-hud-readability-contract.test.ts",
+      "tests/priority-message-channel.test.ts"
+    ],
+    "implementation": [
+      "src/ux/wis212-hud-readability-contract.ts",
+      "src/ux/priority-message-channel.ts"
+    ]
+  }
+}

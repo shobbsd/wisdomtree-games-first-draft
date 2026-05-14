@@ -1,0 +1,120 @@
+
+> multiplayer-core-loop-baseline@0.1.0 play
+> tsx src/playable/terminal-playable.ts
+
+cMultiplayer Rising Ground - Playable Loop
+Room: play-room-mo9uhg3m
+Controls: auto (set PLAYABLE_AUTO=0 + TTY for manual)
+Tick 1 / 12  Ground 0.03  Speed x1.01
+Intent: you=0.35  bot=0.35
+
+Live Standings
+ 1. bot      score=  49  height=  4.90  LIVE
+ 2. you      score=  47  height=  4.70  LIVE
+cMultiplayer Rising Ground - Playable Loop
+Room: play-room-mo9uhg3m
+Controls: auto (set PLAYABLE_AUTO=0 + TTY for manual)
+Tick 2 / 12  Ground 0.05  Speed x1.02
+Intent: you=0.35  bot=0.35
+
+Live Standings
+ 1. bot      score=  50  height=  4.90  LIVE
+ 2. you      score=  48  height=  4.70  LIVE
+cMultiplayer Rising Ground - Playable Loop
+Room: play-room-mo9uhg3m
+Controls: auto (set PLAYABLE_AUTO=0 + TTY for manual)
+Tick 3 / 12  Ground 0.08  Speed x1.04
+Intent: you=0.35  bot=0.35
+
+Live Standings
+ 1. bot      score=  50  height=  4.89  LIVE
+ 2. you      score=  48  height=  4.69  LIVE
+cMultiplayer Rising Ground - Playable Loop
+Room: play-room-mo9uhg3m
+Controls: auto (set PLAYABLE_AUTO=0 + TTY for manual)
+Tick 4 / 12  Ground 0.10  Speed x1.05
+Intent: you=0.35  bot=0.35
+
+Live Standings
+ 1. bot      score=  51  height=  4.89  LIVE
+ 2. you      score=  49  height=  4.69  LIVE
+cMultiplayer Rising Ground - Playable Loop
+Room: play-room-mo9uhg3m
+Controls: auto (set PLAYABLE_AUTO=0 + TTY for manual)
+Tick 5 / 12  Ground 0.13  Speed x1.06
+Intent: you=0.35  bot=0.35
+
+Live Standings
+ 1. bot      score=  51  height=  4.88  LIVE
+ 2. you      score=  49  height=  4.68  LIVE
+cMultiplayer Rising Ground - Playable Loop
+Room: play-room-mo9uhg3m
+Controls: auto (set PLAYABLE_AUTO=0 + TTY for manual)
+Tick 6 / 12  Ground 0.16  Speed x1.07
+Intent: you=0.35  bot=0.35
+
+Live Standings
+ 1. bot      score=  52  height=  4.88  LIVE
+ 2. you      score=  50  height=  4.68  LIVE
+cMultiplayer Rising Ground - Playable Loop
+Room: play-room-mo9uhg3m
+Controls: auto (set PLAYABLE_AUTO=0 + TTY for manual)
+Tick 7 / 12  Ground 0.18  Speed x1.08
+Intent: you=0.35  bot=0.35
+
+Live Standings
+ 1. bot      score=  52  height=  4.87  LIVE
+ 2. you      score=  50  height=  4.67  LIVE
+cMultiplayer Rising Ground - Playable Loop
+Room: play-room-mo9uhg3m
+Controls: auto (set PLAYABLE_AUTO=0 + TTY for manual)
+Tick 8 / 12  Ground 0.21  Speed x1.10
+Intent: you=0.35  bot=0.35
+
+Live Standings
+ 1. bot      score=  53  height=  4.86  LIVE
+ 2. you      score=  51  height=  4.66  LIVE
+cMultiplayer Rising Ground - Playable Loop
+Room: play-room-mo9uhg3m
+Controls: auto (set PLAYABLE_AUTO=0 + TTY for manual)
+Tick 9 / 12  Ground 0.24  Speed x1.11
+Intent: you=0.35  bot=0.35
+
+Live Standings
+ 1. bot      score=  53  height=  4.85  LIVE
+ 2. you      score=  51  height=  4.65  LIVE
+cMultiplayer Rising Ground - Playable Loop
+Room: play-room-mo9uhg3m
+Controls: auto (set PLAYABLE_AUTO=0 + TTY for manual)
+Tick 10 / 12  Ground 0.27  Speed x1.12
+Intent: you=0.35  bot=0.35
+
+Live Standings
+ 1. bot      score=  53  height=  4.84  LIVE
+ 2. you      score=  51  height=  4.64  LIVE
+cMultiplayer Rising Ground - Playable Loop
+Room: play-room-mo9uhg3m
+Controls: auto (set PLAYABLE_AUTO=0 + TTY for manual)
+Tick 11 / 12  Ground 0.29  Speed x1.13
+Intent: you=0.35  bot=0.35
+
+Live Standings
+ 1. bot      score=  54  height=  4.83  LIVE
+ 2. you      score=  52  height=  4.63  LIVE
+cMultiplayer Rising Ground - Playable Loop
+Room: play-room-mo9uhg3m
+Controls: auto (set PLAYABLE_AUTO=0 + TTY for manual)
+Tick 12 / 12  Ground 0.32  Speed x1.14
+Intent: you=0.35  bot=0.35
+
+Live Standings
+ 1. bot      score=  54  height=  4.81  LIVE
+ 2. you      score=  52  height=  4.61  LIVE
+
+Round Complete
+ 1. bot      score=  54 token=1
+ 2. you      score=  52 token=2
+
+Global Leaderboard
+ 1. bot      score=  54 updated=2026-04-22T09:23:04.859Z
+ 2. you      score=  52 updated=2026-04-22T09:23:04.859Z

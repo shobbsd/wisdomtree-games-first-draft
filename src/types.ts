@@ -8,7 +8,9 @@ export interface PlayerSnapshot {
   height: number;
   velocity: number;
   connected: boolean;
+  reconnectExpiresAtMs: number | null;
   isEliminated: boolean;
+  eliminationReason: "ground" | "disconnected" | null;
   lastInputSequence: number;
   survivalMs: number;
 }

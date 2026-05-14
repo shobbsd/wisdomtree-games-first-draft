@@ -1,0 +1,128 @@
+{
+  "issue": "WIS-492",
+  "generatedAt": "2026-04-23",
+  "frameGrid": {
+    "terrain": "16x16",
+    "character": "24x24"
+  },
+  "renderScale": {
+    "desktop": "2x",
+    "mobile": "2x-2.5x"
+  },
+  "requiredFiles": [
+    {
+      "path": "assets/sprites/player/player_sheet.png",
+      "type": "sprite_sheet",
+      "states": ["idle", "run", "jump_up", "jump_down", "hit", "dead", "spawn"]
+    },
+    {
+      "path": "assets/sprites/player/player_fx_sheet.png",
+      "type": "fx_sheet",
+      "states": ["spawn", "hit"]
+    },
+    {
+      "path": "assets/sprites/hazards/spike_sheet.png",
+      "type": "sprite_sheet",
+      "states": ["idle", "armed"]
+    },
+    {
+      "path": "assets/sprites/hazards/drone_sheet.png",
+      "type": "sprite_sheet",
+      "states": ["idle", "move", "hit"]
+    },
+    {
+      "path": "assets/sprites/hazards/rising_ground_sheet.png",
+      "type": "sprite_sheet",
+      "states": ["loop"]
+    },
+    {
+      "path": "assets/sprites/terrain/terrain_tileset.png",
+      "type": "tile_atlas",
+      "states": ["center", "edge", "corner", "one_way", "crack"]
+    },
+    {
+      "path": "assets/sprites/terrain/bg_parallax_strip.png",
+      "type": "background_strip",
+      "states": ["base"]
+    },
+    {
+      "path": "assets/sprites/pickups/coin_sheet.png",
+      "type": "sprite_sheet",
+      "states": ["spin"]
+    },
+    {
+      "path": "assets/sprites/pickups/boost_sheet.png",
+      "type": "sprite_sheet",
+      "states": ["idle", "collect"]
+    },
+    {
+      "path": "assets/ui/hud/hud_icons_sheet.png",
+      "type": "ui_sheet",
+      "states": ["icons"]
+    },
+    {
+      "path": "assets/ui/hud/hud_badges.png",
+      "type": "ui_sheet",
+      "states": ["you", "out", "rank", "warn"]
+    },
+    {
+      "path": "assets/ui/hud/hud_panels_9slice.png",
+      "type": "ui_sheet",
+      "states": ["panel"]
+    }
+  ],
+  "fallbackPlaceholders": [
+    {
+      "path": "assets/placeholders/player_sheet.placeholder.png",
+      "replaces": "assets/sprites/player/player_sheet.png"
+    },
+    {
+      "path": "assets/placeholders/player_fx.placeholder.png",
+      "replaces": "assets/sprites/player/player_fx_sheet.png"
+    },
+    {
+      "path": "assets/placeholders/hazard_spike.placeholder.png",
+      "replaces": "assets/sprites/hazards/spike_sheet.png"
+    },
+    {
+      "path": "assets/placeholders/hazard_drone.placeholder.png",
+      "replaces": "assets/sprites/hazards/drone_sheet.png"
+    },
+    {
+      "path": "assets/placeholders/rising_ground.placeholder.png",
+      "replaces": "assets/sprites/hazards/rising_ground_sheet.png"
+    },
+    {
+      "path": "assets/placeholders/terrain_tileset.placeholder.png",
+      "replaces": "assets/sprites/terrain/terrain_tileset.png"
+    },
+    {
+      "path": "assets/placeholders/bg_parallax.placeholder.png",
+      "replaces": "assets/sprites/terrain/bg_parallax_strip.png"
+    },
+    {
+      "path": "assets/placeholders/pickup_coin.placeholder.png",
+      "replaces": "assets/sprites/pickups/coin_sheet.png"
+    },
+    {
+      "path": "assets/placeholders/pickup_boost.placeholder.png",
+      "replaces": "assets/sprites/pickups/boost_sheet.png"
+    },
+    {
+      "path": "assets/placeholders/hud_icons.placeholder.png",
+      "replaces": "assets/ui/hud/hud_icons_sheet.png"
+    },
+    {
+      "path": "assets/placeholders/hud_badges.placeholder.png",
+      "replaces": "assets/ui/hud/hud_badges.png"
+    },
+    {
+      "path": "assets/placeholders/hud_panels.placeholder.png",
+      "replaces": "assets/ui/hud/hud_panels_9slice.png"
+    }
+  ],
+  "coordination": {
+    "linkedIssue": "WIS-491",
+    "handoffRule": "Wire production paths now; swap placeholder assets 1:1 with no path changes."
+  }
+}

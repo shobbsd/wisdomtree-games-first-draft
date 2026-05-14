@@ -1,0 +1,114 @@
+{
+  "generatedAt": "2026-04-24T09:26:00.425Z",
+  "issue": "WIS-511",
+  "registryVersion": "1.0.0",
+  "samples": {
+    "player_auth_token": {
+      "schemaId": "session.identity.player_auth_token.v1",
+      "fields": [
+        "v",
+        "sid",
+        "pid",
+        "exp"
+      ],
+      "samplePayload": {
+        "v": 1,
+        "sid": "room-wis511-sample",
+        "pid": "alpha",
+        "exp": 3600010
+      }
+    },
+    "session_leaderboard_updated": {
+      "eventType": "session.leaderboard.updated",
+      "schemaId": "session.leaderboard.updated.v1",
+      "fields": [
+        "sessionId",
+        "phase",
+        "revision",
+        "tick",
+        "updatedAt",
+        "reason",
+        "snapshot",
+        "updates"
+      ],
+      "samplePayload": {
+        "sessionId": "room-wis511-sample",
+        "phase": "in_round",
+        "revision": 4,
+        "tick": 1,
+        "updatedAt": 100,
+        "reason": "tick",
+        "snapshot": [
+          {
+            "playerId": "alpha",
+            "rank": 1,
+            "score": 61,
+            "survivalMs": 100,
+            "connected": true,
+            "isEliminated": false,
+            "eliminationReason": null,
+            "isTie": false,
+            "placementToken": "1"
+          }
+        ],
+        "updates": [
+          {
+            "playerId": "alpha",
+            "kind": "updated",
+            "previousRank": 1,
+            "rank": 1,
+            "rankDelta": 0,
+            "previousScore": 60,
+            "score": 61,
+            "scoreDelta": 1,
+            "previousSurvivalMs": 0,
+            "survivalMs": 100,
+            "survivalDeltaMs": 100,
+            "changedFields": [
+              "score",
+              "survivalMs"
+            ]
+          }
+        ]
+      }
+    },
+    "session_flow_state_updated": {
+      "eventType": "session.flow_state.updated",
+      "schemaId": "session.flow_state.updated.v1",
+      "fields": [
+        "sessionId",
+        "phase",
+        "uxStateId",
+        "revision",
+        "updatedAt",
+        "reason",
+        "players",
+        "tick",
+        "resultsLifecycleState"
+      ],
+      "samplePayload": {
+        "sessionId": "room-wis511-sample",
+        "phase": "in_round",
+        "uxStateId": "HUD-ACTIVE",
+        "revision": 4,
+        "updatedAt": 100,
+        "reason": "tick",
+        "players": 1,
+        "tick": 1,
+        "resultsLifecycleState": null
+      }
+    },
+    "degraded_confidence_signal": {
+      "eventType": "session.lifecycle.transport_connect_failed",
+      "schemaId": "session.lifecycle.transport_connect_failed.v1",
+      "fields": [
+        "sessionId",
+        "nowMs"
+      ],
+      "samplePayload": {
+        "sessionId": "room-wis511-sample",
+        "nowMs": 5
+      }
+    }
+  }
+}

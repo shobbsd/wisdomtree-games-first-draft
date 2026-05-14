@@ -1,0 +1,51 @@
+{
+  "registryVersion": "1.0.0",
+  "identityTokenSchemaId": "session.identity.player_auth_token.v1",
+  "eventSchemaIds": {
+    "session.lifecycle.created": "session.lifecycle.created.v1",
+    "session.lifecycle.player_joined": "session.lifecycle.player_joined.v1",
+    "session.input.accepted": "session.input.accepted.v1",
+    "session.leaderboard.updated": "session.leaderboard.updated.v1",
+    "session.flow_state.updated": "session.flow_state.updated.v1",
+    "session.lifecycle.transport_connect_failed": "session.lifecycle.transport_connect_failed.v1",
+    "session.sync.desync_detected": "session.sync.desync_detected.v1",
+    "session.integrity.violation": "session.integrity.violation.v1",
+    "session.integrity.escalated": "session.integrity.escalated.v1",
+    "rg.elimination.triggered": "rg.elimination.triggered.v1"
+  },
+  "requiredEventSet": [
+    {
+      "id": "session_lifecycle_created",
+      "eventTypes": ["session.lifecycle.created"],
+      "minCount": 1
+    },
+    {
+      "id": "session_lifecycle_player_joined",
+      "eventTypes": ["session.lifecycle.player_joined"],
+      "minCount": 1
+    },
+    {
+      "id": "input_acceptance",
+      "eventTypes": ["session.input.accepted"],
+      "minCount": 1
+    },
+    {
+      "id": "rank_delta_or_leaderboard_snapshot",
+      "eventTypes": ["session.leaderboard.updated"],
+      "minCount": 1
+    },
+    {
+      "id": "elimination_signal",
+      "eventTypes": ["rg.elimination.triggered"],
+      "minCount": 1
+    },
+    {
+      "id": "degraded_confidence_signal",
+      "eventTypes": [
+        "session.lifecycle.transport_connect_failed",
+        "session.sync.desync_detected"
+      ],
+      "minCount": 1
+    }
+  ]
+}

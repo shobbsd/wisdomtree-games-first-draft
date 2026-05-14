@@ -1,0 +1,41 @@
+{
+  "issue": "WIS-516",
+  "dependency": "WIS-514",
+  "sourceDocument": "timing-tolerance-constants",
+  "reconciledAtUtc": "2026-04-24T10:41:16Z",
+  "constantsLocked": true,
+  "appliedScopeDecisions": {
+    "hardEnforcement": [
+      "impossible_input_boundaries",
+      "token_replay_expiry_mismatch",
+      "desync_burst_input_quarantine"
+    ],
+    "softThresholds": [
+      "tick_lag_distribution"
+    ],
+    "sideEffects": [
+      "freeze_realtime_rankings_on_desync_burst",
+      "require_authoritative_resync_checkpoint_before_unquarantine"
+    ]
+  },
+  "lockedConstants": {
+    "maxIntentAgeMs": 250,
+    "rejectEscalationWindowMs": 10000,
+    "rejectEscalationWarnCount": 3,
+    "rejectEscalationThrottleCount": 6,
+    "rejectEscalationThrottleMs": 3000,
+    "rejectEscalationCriticalCount": 10,
+    "desyncEscalationWindowMs": 8000,
+    "desyncEscalationCount": 4,
+    "tickLagWarnWindowMs": 60000,
+    "tickLagWarnP95Ticks": 1,
+    "tickLagCriticalWindowMs": 20000,
+    "tickLagCriticalP95Ticks": 3,
+    "tickLagPageWindowMs": 5000,
+    "tickLagPageTicks": 5,
+    "movementHeightSlackUnits": 0.18,
+    "movementVelocitySlackPct": 0.08
+  },
+  "ambiguousDecisionKeys": [],
+  "evidenceLog": "docs/ux/evidence/WIS-516-integrity-executable-evidence.log"
+}

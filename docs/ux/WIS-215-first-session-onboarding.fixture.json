@@ -1,0 +1,40 @@
+{
+  "version": "1.0.0",
+  "issue": "WIS-215",
+  "generatedAt": "2026-04-15",
+  "cueOrder": ["OB-QUEUE-FALLBACK", "OB-COUNTDOWN-READY", "OB-HAZARD-URGENCY"],
+  "cues": {
+    "OB-QUEUE-FALLBACK": {
+      "title": "Couldn’t find a match yet",
+      "body": "Tip: Retry keeps queue active. Create Room starts immediately with your own lobby.",
+      "ctaLabel": "Got it",
+      "dismissible": true,
+      "nonBlocking": true,
+      "triggerUxStateIds": ["TS-CONNECT-FAILED"],
+      "suppressedUxStateIds": ["HUD-ELIMINATED"]
+    },
+    "OB-COUNTDOWN-READY": {
+      "title": "Match starts in 3",
+      "body": "Ready state gates countdown start. Stay connected and marked ready to avoid cancellation.",
+      "ctaLabel": "Got it",
+      "dismissible": true,
+      "nonBlocking": true,
+      "triggerUxStateIds": ["PM-COUNTDOWN"],
+      "suppressedUxStateIds": ["HUD-ELIMINATED"]
+    },
+    "OB-HAZARD-URGENCY": {
+      "title": "Ground Rising Faster",
+      "body": "When warning escalates toward Critical Rise Speed, prioritize vertical movement immediately.",
+      "ctaLabel": "Got it",
+      "dismissible": true,
+      "nonBlocking": true,
+      "triggerUxStateIds": ["HUD-ACTIVE"],
+      "suppressedUxStateIds": ["HUD-ELIMINATED"]
+    }
+  },
+  "parityRules": [
+    "Cue order and wording are identical on desktop and mobile.",
+    "Cues are dismissible and non-blocking.",
+    "HUD-ELIMINATED suppresses onboarding cues to protect terminal messaging."
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "version": "1.0.0",
+  "issue": "WIS-216",
+  "generatedAt": "2026-04-15",
+  "scope": "mvp_accessibility_baseline_hud_alerts_results",
+  "baseline": {
+    "contrastMinimums": {
+      "textRatio": 4.5,
+      "nonTextRatio": 3
+    },
+    "dualSignalEncoding": {
+      "required": true,
+      "channels": ["icon", "label", "body_copy"]
+    },
+    "typographyMinimumsPx": {
+      "hudField": 18,
+      "hudCritical": 20,
+      "resultsStatus": 18,
+      "actionLabel": 18
+    },
+    "reducedMotion": {
+      "supportsPrefersReducedMotion": true,
+      "reducedPreset": {
+        "transitionProperty": "opacity",
+        "maxDurationMs": 150,
+        "pulseAllowed": false,
+        "transformMotionAllowed": false
+      }
+    },
+    "liveRegions": {
+      "passive": {
+        "politeness": "off",
+        "role": "none",
+        "ariaAtomic": false
+      },
+      "nonCritical": {
+        "politeness": "polite",
+        "role": "status",
+        "ariaAtomic": true
+      },
+      "critical": {
+        "politeness": "assertive",
+        "role": "alert",
+        "ariaAtomic": true
+      }
+    },
+    "focusOrder": {
+      "eliminationActions": ["elimination_heading", "primary_action", "secondary_action"],
+      "resultsActions": ["results_heading", "primary_action", "secondary_action", "tertiary_action"],
+      "resultsFailureAlert": ["results_failure_heading", "acknowledge_button", "view_details_button"]
+    },
+    "acceptanceChecks": [
+      {
+        "id": "A11Y-216-01",
+        "assertion": "Critical HUD and failed results states emit assertive alert semantics on first render."
+      },
+      {
+        "id": "A11Y-216-02",
+        "assertion": "Pending/retrying/recovery result states emit polite status semantics for assistive tech."
+      },
+      {
+        "id": "A11Y-216-03",
+        "assertion": "Reduced-motion mode restricts transitions to opacity-only with max 150ms duration."
+      },
+      {
+        "id": "A11Y-216-04",
+        "assertion": "Focus order stays deterministic across elimination actions and post-match action surfaces."
+      }
+    ]
+  },
+  "evidenceTargets": {
+    "tests": [
+      "tests/wis216-accessibility-baseline-contract.test.ts",
+      "tests/flow-state-contract.test.ts"
+    ],
+    "implementation": [
+      "src/ux/wis216-accessibility-baseline-contract.ts",
+      "src/core/session-manager.ts"
+    ]
+  }
+}

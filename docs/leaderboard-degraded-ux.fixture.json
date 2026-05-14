@@ -1,0 +1,66 @@
+{
+  "version": "1.0.0",
+  "issue": "WIS-104",
+  "generatedAt": "2026-04-13",
+  "scope": "results_degraded_lifecycle",
+  "copyLock": {
+    "pending": "Saving your match result...",
+    "retryingActive": "Sync issue detected. Retrying leaderboard save ({attempt}/{maxAttempts})...",
+    "retryingDelayed": "Still syncing leaderboard. Your result is safe and will appear soon.",
+    "failedTerminal": "Leaderboard sync failed for now. We will keep retrying in the background.",
+    "reconciledToast": "Leaderboard synced. Your placement is now confirmed.",
+    "actions": {
+      "ackPrimary": "OK",
+      "ackSecondary": "View details",
+      "rematch": "Play Again",
+      "backToLobby": "Back to Lobby",
+      "exitToMenu": "Exit to Menu"
+    }
+  },
+  "stateContract": {
+    "RESULTS-NORMAL": {
+      "copyKey": "results.normal.final_placement",
+      "commitLatencyThresholdMs": 400,
+      "rematchEnabled": true
+    },
+    "RESULTS-PENDING": {
+      "copyKey": "results.pending.saving",
+      "trigger": "commitLatencyMs > 400",
+      "rematchEnabled": true,
+      "syncPendingChip": true
+    },
+    "RESULTS-RETRYING": {
+      "copyKeyActive": "results.retrying.active",
+      "copyKeyDelayed": "results.retrying.delayed",
+      "delayedThresholdMs": 5000,
+      "attemptTokenFormat": "({attempt}/{maxAttempts})",
+      "rematchEnabled": true,
+      "syncPendingChip": true
+    },
+    "RESULTS-FAILED": {
+      "copyKey": "results.failed.terminal",
+      "acknowledgementRequired": true,
+      "rematchEnabledBeforeAck": false,
+      "rematchEnabledAfterAck": true,
+      "syncPendingChipAfterAck": true
+    }
+  },
+  "platformParity": {
+    "desktop": "matches copyLock and stateContract",
+    "mobile": "matches copyLock and stateContract",
+    "invariants": [
+      "No platform-specific copy variants.",
+      "Retry and failure messaging preserves token format and CTA wording.",
+      "Acknowledgement gating behavior is identical before rematch unlock."
+    ]
+  },
+  "evidence": {
+    "tests": [
+      "tests/flow-state-contract.test.ts"
+    ],
+    "implementation": [
+      "src/core/session-manager.ts",
+      "docs/ux/WIS-95-late-match-hud-results.fixture.json"
+    ]
+  }
+}

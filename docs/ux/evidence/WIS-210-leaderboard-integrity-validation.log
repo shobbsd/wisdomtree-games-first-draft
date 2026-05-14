@@ -1,0 +1,56 @@
+WIS-210 validation run
+timestamp=2026-04-15T12:51:29Z
+
+=== cmd: npm test -- tests/leaderboard-service.test.ts ===
+npm warn Unknown env config "auto-install-peers". This will stop working in the next major version of npm.
+npm warn Unknown env config "recursive". This will stop working in the next major version of npm.
+
+> multiplayer-core-loop-baseline@0.1.0 test
+> vitest run tests/leaderboard-service.test.ts
+
+
+ RUN  v2.1.9 /Users/shaquillehobbs-daley/.paperclip/instances/default/projects/7ad46924-525c-4e4c-bd0f-4e4c90840b19/0314dc7c-6916-4876-8414-206c75fb980a/_default
+
+ ✓ tests/leaderboard-service.test.ts (8 tests) 25ms
+
+ Test Files  1 passed (1)
+      Tests  8 passed (8)
+   Start at  13:51:30
+   Duration  1.08s (transform 232ms, setup 0ms, collect 353ms, tests 25ms, environment 0ms, prepare 302ms)
+
+
+=== cmd: npm test -- tests/durability-recovery.test.ts ===
+npm warn Unknown env config "auto-install-peers". This will stop working in the next major version of npm.
+npm warn Unknown env config "recursive". This will stop working in the next major version of npm.
+
+> multiplayer-core-loop-baseline@0.1.0 test
+> vitest run tests/durability-recovery.test.ts
+
+
+ RUN  v2.1.9 /Users/shaquillehobbs-daley/.paperclip/instances/default/projects/7ad46924-525c-4e4c-bd0f-4e4c90840b19/0314dc7c-6916-4876-8414-206c75fb980a/_default
+
+ ✓ tests/durability-recovery.test.ts (3 tests) 20ms
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  13:51:32
+   Duration  759ms (transform 93ms, setup 0ms, collect 118ms, tests 20ms, environment 0ms, prepare 62ms)
+
+
+=== cmd: npm test -- tests/http-room-transport.test.ts ===
+npm warn Unknown env config "auto-install-peers". This will stop working in the next major version of npm.
+npm warn Unknown env config "recursive". This will stop working in the next major version of npm.
+
+> multiplayer-core-loop-baseline@0.1.0 test
+> vitest run tests/http-room-transport.test.ts
+
+
+ RUN  v2.1.9 /Users/shaquillehobbs-daley/.paperclip/instances/default/projects/7ad46924-525c-4e4c-bd0f-4e4c90840b19/0314dc7c-6916-4876-8414-206c75fb980a/_default
+
+ ✓ tests/http-room-transport.test.ts (4 tests) 108ms
+
+ Test Files  1 passed (1)
+      Tests  4 passed (4)
+   Start at  13:51:34
+   Duration  843ms (transform 141ms, setup 0ms, collect 162ms, tests 108ms, environment 0ms, prepare 183ms)
+

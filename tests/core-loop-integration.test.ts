@@ -25,6 +25,8 @@ describe("core loop integration", () => {
     const standings = leaderboard.getStandings();
 
     expect(ingestion.sessionId).toBe("room-int");
+    expect(ingestion.commits).toHaveLength(2);
+    expect(ingestion.commits.every((commit) => commit.rankDelta === null)).toBe(true);
     expect(standings).toHaveLength(2);
     expect(new Set(standings.map((entry) => entry.playerId))).toEqual(new Set(["alpha", "beta"]));
 

@@ -1,0 +1,26 @@
+{
+  "issue": "WIS-210",
+  "capturedAt": "2026-04-15T13:51:00+01:00",
+  "event": "leaderboard.integrity.mismatch_quarantined",
+  "payloadShape": {
+    "eventId": "match-final:room-integrity",
+    "sessionId": "room-integrity",
+    "quarantined": true,
+    "reason": "event_payload_mismatch",
+    "mismatchKinds": ["entries"],
+    "expected": {
+      "sessionId": "room-integrity",
+      "signature": "<sha256>",
+      "entriesDigest": "<sha256>"
+    },
+    "received": {
+      "sessionId": "room-integrity",
+      "signature": "<sha256>",
+      "entriesDigest": "<sha256>"
+    }
+  },
+  "assertedByTests": [
+    "tests/leaderboard-service.test.ts",
+    "tests/durability-recovery.test.ts"
+  ]
+}

@@ -1,0 +1,1212 @@
+{
+  "version": 1,
+  "sessionSnapshots": [
+    {
+      "eventId": "demo-room:snapshot:1",
+      "sessionId": "demo-room",
+      "revision": 1,
+      "phase": "lobby",
+      "capturedAt": 1776085248940,
+      "world": {
+        "tick": 0,
+        "groundHeight": 0,
+        "groundRiseSpeed": 0.5,
+        "stateHash": "57273864b933eab5"
+      },
+      "players": [],
+      "reason": "created",
+      "completedAt": null
+    },
+    {
+      "eventId": "demo-room:snapshot:2",
+      "sessionId": "demo-room",
+      "revision": 2,
+      "phase": "lobby",
+      "capturedAt": 1776085248941,
+      "world": {
+        "tick": 0,
+        "groundHeight": 0,
+        "groundRiseSpeed": 0.5,
+        "stateHash": "4d3ba9778107cbc2"
+      },
+      "players": [
+        {
+          "playerId": "runner-a",
+          "height": 5,
+          "velocity": 0,
+          "connected": true,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 0,
+          "survivalMs": 0
+        }
+      ],
+      "reason": "player_joined",
+      "completedAt": null
+    },
+    {
+      "eventId": "demo-room:snapshot:3",
+      "sessionId": "demo-room",
+      "revision": 3,
+      "phase": "lobby",
+      "capturedAt": 1776085248942,
+      "world": {
+        "tick": 0,
+        "groundHeight": 0,
+        "groundRiseSpeed": 0.5,
+        "stateHash": "a67b1fb58bb58bc3"
+      },
+      "players": [
+        {
+          "playerId": "runner-a",
+          "height": 5,
+          "velocity": 0,
+          "connected": true,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 0,
+          "survivalMs": 0
+        },
+        {
+          "playerId": "runner-b",
+          "height": 4.5,
+          "velocity": 0,
+          "connected": true,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 0,
+          "survivalMs": 0
+        }
+      ],
+      "reason": "player_joined",
+      "completedAt": null
+    },
+    {
+      "eventId": "demo-room:snapshot:4",
+      "sessionId": "demo-room",
+      "revision": 4,
+      "phase": "in_round",
+      "capturedAt": 1776085248951,
+      "world": {
+        "tick": 1,
+        "groundHeight": 0.28,
+        "groundRiseSpeed": 0.56,
+        "stateHash": "58edd132f6ca807d"
+      },
+      "players": [
+        {
+          "playerId": "runner-a",
+          "height": 4.775,
+          "velocity": -0.45,
+          "connected": true,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 1,
+          "survivalMs": 500
+        },
+        {
+          "playerId": "runner-b",
+          "height": 4.2,
+          "velocity": -0.6,
+          "connected": true,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 1,
+          "survivalMs": 500
+        }
+      ],
+      "reason": "tick",
+      "completedAt": null
+    },
+    {
+      "eventId": "demo-room:snapshot:5",
+      "sessionId": "demo-room",
+      "revision": 5,
+      "phase": "in_round",
+      "capturedAt": 1776085248951,
+      "world": {
+        "tick": 2,
+        "groundHeight": 0.59,
+        "groundRiseSpeed": 0.62,
+        "stateHash": "60a5abc58f1077a2"
+      },
+      "players": [
+        {
+          "playerId": "runner-a",
+          "height": 4.325,
+          "velocity": -0.9,
+          "connected": true,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 1,
+          "survivalMs": 1000
+        },
+        {
+          "playerId": "runner-b",
+          "height": 3.6,
+          "velocity": -1.2,
+          "connected": true,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 1,
+          "survivalMs": 1000
+        }
+      ],
+      "reason": "tick",
+      "completedAt": null
+    },
+    {
+      "eventId": "demo-room:snapshot:6",
+      "sessionId": "demo-room",
+      "revision": 6,
+      "phase": "results",
+      "capturedAt": 1776085248952,
+      "world": {
+        "tick": 2,
+        "groundHeight": 0.59,
+        "groundRiseSpeed": 0.62,
+        "stateHash": "60a5abc58f1077a2"
+      },
+      "players": [
+        {
+          "playerId": "runner-a",
+          "height": 4.325,
+          "velocity": -0.9,
+          "connected": true,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 1,
+          "survivalMs": 1000
+        },
+        {
+          "playerId": "runner-b",
+          "height": 3.6,
+          "velocity": -1.2,
+          "connected": true,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 1,
+          "survivalMs": 1000
+        }
+      ],
+      "reason": "completed",
+      "completedAt": 1776085248952
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:1",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 1,
+      "phase": "lobby",
+      "capturedAt": 1776849596799,
+      "world": {
+        "tick": 0,
+        "groundHeight": 0,
+        "groundRiseSpeed": 0.5,
+        "stateHash": "57273864b933eab5"
+      },
+      "players": [],
+      "reason": "created",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:2",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 2,
+      "phase": "lobby",
+      "capturedAt": 1776849596800,
+      "world": {
+        "tick": 0,
+        "groundHeight": 0,
+        "groundRiseSpeed": 0.5,
+        "stateHash": "9d28ce1e2ea76c7c"
+      },
+      "players": [
+        {
+          "playerId": "you",
+          "height": 4.7,
+          "velocity": 0,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 0,
+          "survivalMs": 0
+        }
+      ],
+      "reason": "player_joined",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:3",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 3,
+      "phase": "lobby",
+      "capturedAt": 1776849596801,
+      "world": {
+        "tick": 0,
+        "groundHeight": 0,
+        "groundRiseSpeed": 0.5,
+        "stateHash": "9beda83e028e3c9f"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.9,
+          "velocity": 0,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 0,
+          "survivalMs": 0
+        },
+        {
+          "playerId": "you",
+          "height": 4.7,
+          "velocity": 0,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 0,
+          "survivalMs": 0
+        }
+      ],
+      "reason": "player_joined",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:4",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 4,
+      "phase": "lobby",
+      "capturedAt": 1776849596802,
+      "world": {
+        "tick": 0,
+        "groundHeight": 0,
+        "groundRiseSpeed": 0.5,
+        "stateHash": "9beda83e028e3c9f"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.9,
+          "velocity": 0,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 0,
+          "survivalMs": 0
+        },
+        {
+          "playerId": "you",
+          "height": 4.7,
+          "velocity": 0,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 0,
+          "survivalMs": 0
+        }
+      ],
+      "reason": "player_ready_changed",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:5",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 5,
+      "phase": "lobby",
+      "capturedAt": 1776849596803,
+      "world": {
+        "tick": 0,
+        "groundHeight": 0,
+        "groundRiseSpeed": 0.5,
+        "stateHash": "9beda83e028e3c9f"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.9,
+          "velocity": 0,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 0,
+          "survivalMs": 0
+        },
+        {
+          "playerId": "you",
+          "height": 4.7,
+          "velocity": 0,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 0,
+          "survivalMs": 0
+        }
+      ],
+      "reason": "player_ready_changed",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:6",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 6,
+      "phase": "in_round",
+      "capturedAt": 1776849596879,
+      "world": {
+        "tick": 1,
+        "groundHeight": 0.040768,
+        "groundRiseSpeed": 0.5096,
+        "stateHash": "0bdecf0f2bfff71c"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.89712,
+          "velocity": -0.036,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 1,
+          "survivalMs": 80
+        },
+        {
+          "playerId": "you",
+          "height": 4.69712,
+          "velocity": -0.036,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 1,
+          "survivalMs": 80
+        }
+      ],
+      "reason": "tick",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:7",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 7,
+      "phase": "in_round",
+      "capturedAt": 1776849596959,
+      "world": {
+        "tick": 2,
+        "groundHeight": 0.082304,
+        "groundRiseSpeed": 0.5192,
+        "stateHash": "4cf13faee91db8d6"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.89136,
+          "velocity": -0.072,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 2,
+          "survivalMs": 160
+        },
+        {
+          "playerId": "you",
+          "height": 4.69136,
+          "velocity": -0.072,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 2,
+          "survivalMs": 160
+        }
+      ],
+      "reason": "tick",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:8",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 8,
+      "phase": "in_round",
+      "capturedAt": 1776849597039,
+      "world": {
+        "tick": 3,
+        "groundHeight": 0.124608,
+        "groundRiseSpeed": 0.5288,
+        "stateHash": "79ee03f197e065eb"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.88272,
+          "velocity": -0.108,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 3,
+          "survivalMs": 240
+        },
+        {
+          "playerId": "you",
+          "height": 4.68272,
+          "velocity": -0.108,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 3,
+          "survivalMs": 240
+        }
+      ],
+      "reason": "tick",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:9",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 9,
+      "phase": "in_round",
+      "capturedAt": 1776849597119,
+      "world": {
+        "tick": 4,
+        "groundHeight": 0.16768,
+        "groundRiseSpeed": 0.5384,
+        "stateHash": "f8020c2cfb8ba8d9"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.8712,
+          "velocity": -0.144,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 4,
+          "survivalMs": 320
+        },
+        {
+          "playerId": "you",
+          "height": 4.6712,
+          "velocity": -0.144,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 4,
+          "survivalMs": 320
+        }
+      ],
+      "reason": "tick",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:10",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 10,
+      "phase": "in_round",
+      "capturedAt": 1776849597199,
+      "world": {
+        "tick": 5,
+        "groundHeight": 0.21152,
+        "groundRiseSpeed": 0.548,
+        "stateHash": "ab1d93597103304f"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.8568,
+          "velocity": -0.18,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 5,
+          "survivalMs": 400
+        },
+        {
+          "playerId": "you",
+          "height": 4.6568,
+          "velocity": -0.18,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 5,
+          "survivalMs": 400
+        }
+      ],
+      "reason": "tick",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:11",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 11,
+      "phase": "in_round",
+      "capturedAt": 1776849597279,
+      "world": {
+        "tick": 6,
+        "groundHeight": 0.256128,
+        "groundRiseSpeed": 0.5576,
+        "stateHash": "19181247011b8867"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.83952,
+          "velocity": -0.216,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 6,
+          "survivalMs": 480
+        },
+        {
+          "playerId": "you",
+          "height": 4.63952,
+          "velocity": -0.216,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 6,
+          "survivalMs": 480
+        }
+      ],
+      "reason": "tick",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:12",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 12,
+      "phase": "in_round",
+      "capturedAt": 1776849597359,
+      "world": {
+        "tick": 7,
+        "groundHeight": 0.301504,
+        "groundRiseSpeed": 0.5672,
+        "stateHash": "3f4dae46706268a3"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.81936,
+          "velocity": -0.252,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 7,
+          "survivalMs": 560
+        },
+        {
+          "playerId": "you",
+          "height": 4.61936,
+          "velocity": -0.252,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 7,
+          "survivalMs": 560
+        }
+      ],
+      "reason": "tick",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:13",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 13,
+      "phase": "in_round",
+      "capturedAt": 1776849597439,
+      "world": {
+        "tick": 8,
+        "groundHeight": 0.347648,
+        "groundRiseSpeed": 0.5768,
+        "stateHash": "ef6dcba7740e9f34"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.79632,
+          "velocity": -0.288,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 8,
+          "survivalMs": 640
+        },
+        {
+          "playerId": "you",
+          "height": 4.59632,
+          "velocity": -0.288,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 8,
+          "survivalMs": 640
+        }
+      ],
+      "reason": "tick",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:14",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 14,
+      "phase": "in_round",
+      "capturedAt": 1776849597519,
+      "world": {
+        "tick": 9,
+        "groundHeight": 0.39456,
+        "groundRiseSpeed": 0.5864,
+        "stateHash": "daa71e7fa247e686"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.7704,
+          "velocity": -0.324,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 9,
+          "survivalMs": 720
+        },
+        {
+          "playerId": "you",
+          "height": 4.5704,
+          "velocity": -0.324,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 9,
+          "survivalMs": 720
+        }
+      ],
+      "reason": "tick",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:15",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 15,
+      "phase": "in_round",
+      "capturedAt": 1776849597599,
+      "world": {
+        "tick": 10,
+        "groundHeight": 0.44224,
+        "groundRiseSpeed": 0.596,
+        "stateHash": "9e5371f31f30d87c"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.7416,
+          "velocity": -0.36,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 10,
+          "survivalMs": 800
+        },
+        {
+          "playerId": "you",
+          "height": 4.5416,
+          "velocity": -0.36,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 10,
+          "survivalMs": 800
+        }
+      ],
+      "reason": "tick",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:16",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 16,
+      "phase": "in_round",
+      "capturedAt": 1776849597679,
+      "world": {
+        "tick": 11,
+        "groundHeight": 0.490688,
+        "groundRiseSpeed": 0.6056,
+        "stateHash": "4f41992452cc93d5"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.70992,
+          "velocity": -0.396,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 11,
+          "survivalMs": 880
+        },
+        {
+          "playerId": "you",
+          "height": 4.50992,
+          "velocity": -0.396,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 11,
+          "survivalMs": 880
+        }
+      ],
+      "reason": "tick",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:17",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 17,
+      "phase": "in_round",
+      "capturedAt": 1776849597759,
+      "world": {
+        "tick": 12,
+        "groundHeight": 0.539904,
+        "groundRiseSpeed": 0.6152,
+        "stateHash": "8c84af4109a8f587"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.67536,
+          "velocity": -0.432,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 12,
+          "survivalMs": 960
+        },
+        {
+          "playerId": "you",
+          "height": 4.47536,
+          "velocity": -0.432,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 12,
+          "survivalMs": 960
+        }
+      ],
+      "reason": "tick",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:18",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 18,
+      "phase": "in_round",
+      "capturedAt": 1776849597839,
+      "world": {
+        "tick": 13,
+        "groundHeight": 0.589888,
+        "groundRiseSpeed": 0.6248,
+        "stateHash": "e71de97ef4ba8188"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.63792,
+          "velocity": -0.468,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 13,
+          "survivalMs": 1040
+        },
+        {
+          "playerId": "you",
+          "height": 4.43792,
+          "velocity": -0.468,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 13,
+          "survivalMs": 1040
+        }
+      ],
+      "reason": "tick",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:19",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 19,
+      "phase": "in_round",
+      "capturedAt": 1776849597919,
+      "world": {
+        "tick": 14,
+        "groundHeight": 0.64064,
+        "groundRiseSpeed": 0.6344,
+        "stateHash": "bf6ca937ef269d02"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.5976,
+          "velocity": -0.504,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 14,
+          "survivalMs": 1120
+        },
+        {
+          "playerId": "you",
+          "height": 4.3976,
+          "velocity": -0.504,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 14,
+          "survivalMs": 1120
+        }
+      ],
+      "reason": "tick",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:20",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 20,
+      "phase": "in_round",
+      "capturedAt": 1776849597999,
+      "world": {
+        "tick": 15,
+        "groundHeight": 0.69216,
+        "groundRiseSpeed": 0.644,
+        "stateHash": "b33625b42b352196"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.5544,
+          "velocity": -0.54,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 15,
+          "survivalMs": 1200
+        },
+        {
+          "playerId": "you",
+          "height": 4.3544,
+          "velocity": -0.54,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 15,
+          "survivalMs": 1200
+        }
+      ],
+      "reason": "tick",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:21",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 21,
+      "phase": "in_round",
+      "capturedAt": 1776849598079,
+      "world": {
+        "tick": 16,
+        "groundHeight": 0.744448,
+        "groundRiseSpeed": 0.6536,
+        "stateHash": "641ef85884abd5f1"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.50832,
+          "velocity": -0.576,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 16,
+          "survivalMs": 1280
+        },
+        {
+          "playerId": "you",
+          "height": 4.30832,
+          "velocity": -0.576,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 16,
+          "survivalMs": 1280
+        }
+      ],
+      "reason": "tick",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:22",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 22,
+      "phase": "in_round",
+      "capturedAt": 1776849598159,
+      "world": {
+        "tick": 17,
+        "groundHeight": 0.797504,
+        "groundRiseSpeed": 0.6632,
+        "stateHash": "06064d0fcef7e2a0"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.45936,
+          "velocity": -0.612,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 17,
+          "survivalMs": 1360
+        },
+        {
+          "playerId": "you",
+          "height": 4.25936,
+          "velocity": -0.612,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 17,
+          "survivalMs": 1360
+        }
+      ],
+      "reason": "tick",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:23",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 23,
+      "phase": "in_round",
+      "capturedAt": 1776849598239,
+      "world": {
+        "tick": 18,
+        "groundHeight": 0.851328,
+        "groundRiseSpeed": 0.6728,
+        "stateHash": "776e004c11baf9d4"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.40752,
+          "velocity": -0.648,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 18,
+          "survivalMs": 1440
+        },
+        {
+          "playerId": "you",
+          "height": 4.20752,
+          "velocity": -0.648,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 18,
+          "survivalMs": 1440
+        }
+      ],
+      "reason": "tick",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:24",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 24,
+      "phase": "in_round",
+      "capturedAt": 1776849598319,
+      "world": {
+        "tick": 19,
+        "groundHeight": 0.90592,
+        "groundRiseSpeed": 0.6824,
+        "stateHash": "63b8b33f40cb483b"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.3528,
+          "velocity": -0.684,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 19,
+          "survivalMs": 1520
+        },
+        {
+          "playerId": "you",
+          "height": 4.1528,
+          "velocity": -0.684,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 19,
+          "survivalMs": 1520
+        }
+      ],
+      "reason": "tick",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:25",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 25,
+      "phase": "in_round",
+      "capturedAt": 1776849598399,
+      "world": {
+        "tick": 20,
+        "groundHeight": 0.96128,
+        "groundRiseSpeed": 0.692,
+        "stateHash": "f5d8e781613e76f5"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.2952,
+          "velocity": -0.72,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 20,
+          "survivalMs": 1600
+        },
+        {
+          "playerId": "you",
+          "height": 4.0952,
+          "velocity": -0.72,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 20,
+          "survivalMs": 1600
+        }
+      ],
+      "reason": "tick",
+      "completedAt": null
+    },
+    {
+      "eventId": "play-room-mo9udfg3:snapshot:26",
+      "sessionId": "play-room-mo9udfg3",
+      "revision": 26,
+      "phase": "results",
+      "capturedAt": 1776849598400,
+      "world": {
+        "tick": 20,
+        "groundHeight": 0.96128,
+        "groundRiseSpeed": 0.692,
+        "stateHash": "f5d8e781613e76f5"
+      },
+      "players": [
+        {
+          "playerId": "bot",
+          "height": 4.2952,
+          "velocity": -0.72,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 20,
+          "survivalMs": 1600
+        },
+        {
+          "playerId": "you",
+          "height": 4.0952,
+          "velocity": -0.72,
+          "connected": true,
+          "reconnectExpiresAtMs": null,
+          "isEliminated": false,
+          "eliminationReason": null,
+          "lastInputSequence": 20,
+          "survivalMs": 1600
+        }
+      ],
+      "reason": "completed",
+      "completedAt": 1776849598400
+    }
+  ],
+  "matchFinalEvents": [
+    {
+      "eventId": "match-final:demo-room",
+      "sessionId": "demo-room",
+      "recordedAt": 1776085248952,
+      "entries": [
+        {
+          "playerId": "runner-a",
+          "score": 53,
+          "survivalMs": 1000
+        },
+        {
+          "playerId": "runner-b",
+          "score": 46,
+          "survivalMs": 1000
+        }
+      ]
+    },
+    {
+      "eventId": "match-final:play-room-mo9udfg3",
+      "sessionId": "play-room-mo9udfg3",
+      "recordedAt": 1776849598400,
+      "entries": [
+        {
+          "playerId": "bot",
+          "score": 59,
+          "survivalMs": 1600
+        },
+        {
+          "playerId": "you",
+          "score": 57,
+          "survivalMs": 1600
+        }
+      ]
+    }
+  ]
+}

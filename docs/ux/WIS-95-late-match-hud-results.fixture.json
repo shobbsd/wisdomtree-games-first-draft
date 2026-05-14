@@ -1,0 +1,194 @@
+{
+  "version": "1.0.0",
+  "issue": "WIS-95",
+  "generatedAt": "2026-04-13",
+  "stateModel": [
+    "HUD-NORMAL",
+    "HUD-RANK-DELTA",
+    "HUD-LOW-CLEARANCE",
+    "HUD-CRITICAL",
+    "HUD-JUMP-NOW",
+    "HUD-ELIMINATED",
+    "ELIM-IMPACT",
+    "ELIM-ACTIONS",
+    "ELIM-AUTO-RESULTS",
+    "RESULTS-NORMAL",
+    "RESULTS-PENDING",
+    "RESULTS-RETRYING",
+    "RESULTS-FAILED"
+  ],
+  "sequences": [
+    {
+      "id": "late-match-alert-preemption",
+      "description": "P2 rank toast is interrupted by P0 urgency; elimination clears queue.",
+      "events": [
+        {
+          "tMs": 0,
+          "event": "late_match_window_entered",
+          "state": "HUD-NORMAL",
+          "surface": "hud",
+          "message": "",
+          "priority": "none"
+        },
+        {
+          "tMs": 600,
+          "event": "rank_improved",
+          "state": "HUD-RANK-DELTA",
+          "surface": "hud_toast_lane",
+          "message": "Rank Up: #3",
+          "priority": "P2"
+        },
+        {
+          "tMs": 900,
+          "event": "elimination_imminent",
+          "state": "HUD-JUMP-NOW",
+          "surface": "hud_banner_lane",
+          "message": "Jump Now",
+          "priority": "P0"
+        },
+        {
+          "tMs": 2300,
+          "event": "ground_speed_threshold_2",
+          "state": "HUD-CRITICAL",
+          "surface": "hud_banner_lane",
+          "message": "Critical Rise Speed",
+          "priority": "P0"
+        },
+        {
+          "tMs": 3400,
+          "event": "player_eliminated",
+          "state": "HUD-ELIMINATED",
+          "surface": "hud_banner_lane",
+          "message": "Eliminated",
+          "priority": "P0",
+          "note": "Queued P2 toasts cleared"
+        }
+      ]
+    },
+    {
+      "id": "elimination-to-results-normal",
+      "description": "Elimination transition with successful leaderboard commit and immediate rematch availability.",
+      "events": [
+        {
+          "tMs": 0,
+          "event": "player_eliminated",
+          "state": "ELIM-IMPACT",
+          "surface": "elimination_overlay",
+          "message": "Eliminated",
+          "priority": "P0"
+        },
+        {
+          "tMs": 1200,
+          "event": "elimination_impact_timeout",
+          "state": "ELIM-ACTIONS",
+          "surface": "elimination_actions_panel",
+          "message": "You can spectate now or view results.",
+          "priority": "P1",
+          "actions": [
+            "View Results",
+            "Spectate"
+          ]
+        },
+        {
+          "tMs": 2600,
+          "event": "user_selected_view_results",
+          "state": "RESULTS-PENDING",
+          "surface": "results_status_slot",
+          "message": "Saving your match result...",
+          "priority": "info"
+        },
+        {
+          "tMs": 3200,
+          "event": "leaderboard_commit_succeeded",
+          "state": "RESULTS-NORMAL",
+          "surface": "results_card",
+          "message": "Final Placement: #2",
+          "priority": "none"
+        },
+        {
+          "tMs": 4100,
+          "event": "user_pressed_play_again",
+          "state": "RESULTS-NORMAL",
+          "surface": "results_cta_row",
+          "message": "Play Again",
+          "priority": "none"
+        }
+      ]
+    },
+    {
+      "id": "elimination-to-results-failed-rematch",
+      "description": "Commit retries fail terminally; rematch remains available after acknowledgment with passive sync chip.",
+      "events": [
+        {
+          "tMs": 0,
+          "event": "player_eliminated",
+          "state": "ELIM-IMPACT",
+          "surface": "elimination_overlay",
+          "message": "Eliminated",
+          "priority": "P0"
+        },
+        {
+          "tMs": 1300,
+          "event": "user_selected_view_results",
+          "state": "RESULTS-PENDING",
+          "surface": "results_status_slot",
+          "message": "Saving your match result...",
+          "priority": "info"
+        },
+        {
+          "tMs": 3300,
+          "event": "leaderboard_commit_retry_scheduled",
+          "state": "RESULTS-RETRYING",
+          "surface": "results_status_slot",
+          "message": "Sync issue detected. Retrying leaderboard save (2/4)...",
+          "priority": "warning"
+        },
+        {
+          "tMs": 6600,
+          "event": "leaderboard_commit_latency_threshold_exceeded",
+          "state": "RESULTS-RETRYING",
+          "surface": "results_status_slot",
+          "message": "Still syncing leaderboard. Your result is safe and will appear soon.",
+          "priority": "warning_plus"
+        },
+        {
+          "tMs": 12400,
+          "event": "leaderboard_commit_failed_terminal",
+          "state": "RESULTS-FAILED",
+          "surface": "results_inline_alert",
+          "message": "Leaderboard sync failed for now. We will keep retrying in the background.",
+          "priority": "critical",
+          "actions": [
+            "OK",
+            "View details"
+          ]
+        },
+        {
+          "tMs": 17200,
+          "event": "user_acknowledged_failure",
+          "state": "RESULTS-FAILED",
+          "surface": "results_sync_pending_chip",
+          "message": "Sync pending",
+          "priority": "critical"
+        },
+        {
+          "tMs": 17600,
+          "event": "user_pressed_play_again",
+          "state": "RESULTS-FAILED",
+          "surface": "results_cta_row",
+          "message": "Play Again",
+          "priority": "critical",
+          "note": "Allowed after acknowledgment; chip persists on next screen"
+        },
+        {
+          "tMs": 28400,
+          "event": "leaderboard_background_reconcile_succeeded",
+          "state": "RESULTS-NORMAL",
+          "surface": "toast",
+          "message": "Leaderboard synced. Your placement is now confirmed.",
+          "priority": "success"
+        }
+      ]
+    }
+  ]
+}

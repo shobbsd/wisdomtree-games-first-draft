@@ -1,0 +1,105 @@
+{
+  "version": "1.0.0",
+  "issue": "WIS-116",
+  "generatedAt": "2026-04-14",
+  "platforms": ["desktop", "mobile"],
+  "scope": "transport_reconnect_and_degraded_service_acceptance",
+  "copyLock": {
+    "connectFailed": {
+      "title": "Couldn’t find a match yet",
+      "body": "Still searching for an open lobby. Retry now or create a room.",
+      "primaryCta": "Retry",
+      "secondaryCta": "Create Room",
+      "source": "WIS-97.copyLock.queueTimeout"
+    },
+    "reconnectTimeout": {
+      "headline": "Disconnected",
+      "detail": "Reconnect failed. You have been moved to results",
+      "source": [
+        "WIS-97.copyLock.hudAlerts.disconnected",
+        "WIS-97.criticalMicrocopyLock.keys.in_run.reconnect.failed_to_results"
+      ]
+    },
+    "serviceDegraded": {
+      "retryingActive": "Sync issue detected. Retrying leaderboard save ({attempt}/{maxAttempts})...",
+      "retryingDelayed": "Still syncing leaderboard. Your result is safe and will appear soon.",
+      "recoveredToast": "Leaderboard synced. Your placement is now confirmed.",
+      "source": [
+        "WIS-95.results.lifecycle",
+        "WIS-104.copyLock"
+      ]
+    }
+  },
+  "stateContract": {
+    "TS-CONNECT-FAILED": {
+      "entryTrigger": "transport_connect_failed",
+      "uiSurface": "pre_match.connection_fallback",
+      "priority": "P1",
+      "blocking": true,
+      "actions": ["Retry", "Create Room"],
+      "exitTrigger": "transport_connected"
+    },
+    "TS-RECONNECT-TIMEOUT": {
+      "entryTrigger": "player_reconnect_timeout",
+      "transportReason": "token_expired",
+      "uiSurface": "in_run.reconnect_terminal",
+      "priority": "P0",
+      "blocking": true,
+      "handoffTarget": "results_screen"
+    },
+    "TS-SERVICE-DEGRADED-RETRYING": {
+      "entryTrigger": "leaderboard_commit_retry_scheduled",
+      "uiSurface": "results.status_slot",
+      "priority": "P1",
+      "blocking": false,
+      "delayedSwapThresholdMs": 5000,
+      "attemptTokenFormat": "({attempt}/{maxAttempts})",
+      "exitTriggers": ["leaderboard_commit_succeeded", "leaderboard_commit_failed_terminal"]
+    },
+    "TS-SERVICE-RECOVERED": {
+      "entryTrigger": "leaderboard_commit_succeeded_after_retry_or_failure",
+      "uiSurface": "results.recovery_toast",
+      "priority": "P2",
+      "blocking": false,
+      "toastDurationMs": 4000,
+      "clearsState": ["TS-SERVICE-DEGRADED-RETRYING", "RESULTS-FAILED.syncPendingChip"]
+    }
+  },
+  "passFailChecklist": [
+    {
+      "id": "FE-TS-01",
+      "assertion": "Connect-failed title/body/CTA labels match copyLock exactly on desktop and mobile."
+    },
+    {
+      "id": "FE-TS-02",
+      "assertion": "Retry action dispatches transport reconnection attempt without clearing room context."
+    },
+    {
+      "id": "FE-TS-03",
+      "assertion": "Reconnect timeout shows locked headline/detail copy before results handoff."
+    },
+    {
+      "id": "FE-TS-04",
+      "assertion": "Retrying degraded copy interpolates {attempt}/{maxAttempts} token values."
+    },
+    {
+      "id": "FE-TS-05",
+      "assertion": "Delayed retrying copy appears only after unresolved retry duration exceeds 5000ms."
+    },
+    {
+      "id": "FE-TS-06",
+      "assertion": "Recovery toast appears for 4000ms and clears degraded indicators."
+    },
+    {
+      "id": "FE-TS-07",
+      "assertion": "Desktop/mobile flow ordering is identical for connect-fail, timeout, degraded retry, and recovery."
+    }
+  ],
+  "evidenceTargets": {
+    "tests": [
+      "tests/flow-state-contract.test.ts",
+      "tests/core-loop-integration.test.ts"
+    ],
+    "serviceSurfaceIssue": "WIS-115"
+  }
+}

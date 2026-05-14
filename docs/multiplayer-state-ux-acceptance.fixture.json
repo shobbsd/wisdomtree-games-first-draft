@@ -1,0 +1,239 @@
+{
+  "specVersion": "1.0.0",
+  "sourceIssue": "WIS-73",
+  "basedOn": {
+    "uxIssue": "WIS-62",
+    "uxCommentId": "ae879cef-3885-463e-8299-ba98dcb9fdf5",
+    "planIssue": "WIS-67"
+  },
+  "lockedDefaults": {
+    "queueFallback": {
+      "title": "Couldn’t find a match yet",
+      "body": "Still searching for an open lobby. Retry now or create a room.",
+      "primaryCta": "Retry",
+      "secondaryCta": "Create Room"
+    },
+    "reconnectCopy": {
+      "lobbyStatus": "Reconnecting",
+      "countdownInterrupted": "Player disconnected",
+      "inMatchRecovered": "Reconnected",
+      "inMatchTimeout": "Disconnected"
+    },
+    "tieDisplay": {
+      "tokenFormat": "T-{rank}",
+      "resultsCardFormat": "Final Placement: T-{rank}",
+      "leaderboardFormat": "T-{rank}"
+    }
+  },
+  "events": [
+    {
+      "id": "PM-QUEUE-SUCCESS",
+      "state": "pre_match.queueing",
+      "event": "quick_match_queue_success",
+      "uiResponse": "Enter lobby and render roster with readiness statuses.",
+      "copy": "Joined Lobby",
+      "priority": "P2"
+    },
+    {
+      "id": "PM-QUEUE-TIMEOUT",
+      "state": "pre_match.queueing",
+      "event": "quick_match_queue_timeout_8s",
+      "uiResponse": "Show timeout fallback with Retry and Create Room actions.",
+      "copy": "Couldn’t find a match yet",
+      "priority": "P1"
+    },
+    {
+      "id": "PM-MIN-PLAYERS-MET",
+      "state": "pre_match.lobby_ready",
+      "event": "min_players_threshold_met",
+      "uiResponse": "Enable host start and keep non-host ready controls visible.",
+      "copy": "Ready to start",
+      "priority": "P2"
+    },
+    {
+      "id": "PM-READY-CHECK-START",
+      "state": "pre_match.ready_check",
+      "event": "ready_check_started",
+      "uiResponse": "Show ready-check countdown modal/banner for 10 seconds.",
+      "copy": "Match starting in {t}",
+      "priority": "P1"
+    },
+    {
+      "id": "PM-READY-CHECK-REMOVE",
+      "state": "pre_match.ready_check",
+      "event": "ready_check_timeout_player_unready",
+      "uiResponse": "Remove player from this start while preserving room membership.",
+      "copy": "You were removed from this start. Rejoin next round.",
+      "priority": "P1"
+    },
+    {
+      "id": "PM-COUNTDOWN-INTERRUPT",
+      "state": "pre_match.countdown",
+      "event": "player_drop_before_go",
+      "uiResponse": "Pause countdown up to five seconds, then re-evaluate gate.",
+      "copy": "Player disconnected",
+      "priority": "P1"
+    },
+    {
+      "id": "PM-COUNTDOWN-RESUME",
+      "state": "pre_match.countdown",
+      "event": "dropped_player_reconnects_before_pause_cap",
+      "uiResponse": "Resume countdown from paused state.",
+      "copy": "Match starting in {t}",
+      "priority": "P1"
+    },
+    {
+      "id": "PM-COUNTDOWN-CANCEL",
+      "state": "pre_match.countdown",
+      "event": "min_players_broken_after_pause",
+      "uiResponse": "Cancel countdown and return to lobby state.",
+      "copy": "Need {n} players to start",
+      "priority": "P1"
+    },
+    {
+      "id": "PM-COUNTDOWN-GO",
+      "state": "pre_match.countdown",
+      "event": "countdown_reaches_zero",
+      "uiResponse": "Render 3-2-1-GO transition and lock pre-game controls.",
+      "copy": "GO",
+      "priority": "P1"
+    },
+    {
+      "id": "IR-RANK-UP",
+      "state": "in_run.hud_active",
+      "event": "rank_improved",
+      "uiResponse": "Toast under HUD, maximum two queued rank toasts.",
+      "copy": "Rank Up: #{newRank}",
+      "priority": "P1"
+    },
+    {
+      "id": "IR-RANK-DOWN",
+      "state": "in_run.hud_active",
+      "event": "rank_dropped",
+      "uiResponse": "Toast under HUD, maximum two queued rank toasts.",
+      "copy": "Rank Down: #{newRank}",
+      "priority": "P1"
+    },
+    {
+      "id": "IR-HAZARD-THRESHOLD-1",
+      "state": "in_run.urgent_alert",
+      "event": "ground_speed_threshold_1",
+      "uiResponse": "Show P0 hazard banner and preempt lower priorities.",
+      "copy": "Ground Rising Faster",
+      "priority": "P0"
+    },
+    {
+      "id": "IR-HAZARD-THRESHOLD-2",
+      "state": "in_run.urgent_alert",
+      "event": "ground_speed_threshold_2",
+      "uiResponse": "Replace prior hazard banner with final escalation warning.",
+      "copy": "Critical Rise Speed",
+      "priority": "P0"
+    },
+    {
+      "id": "IR-LOW-CLEARANCE",
+      "state": "in_run.hud_active",
+      "event": "clearance_low_warning",
+      "uiResponse": "Render non-blocking warning in alert stack.",
+      "copy": "Low Clearance",
+      "priority": "P1"
+    },
+    {
+      "id": "IR-JUMP-NOW",
+      "state": "in_run.urgent_alert",
+      "event": "elimination_imminent",
+      "uiResponse": "Render immediate top-priority warning above gameplay.",
+      "copy": "Jump Now",
+      "priority": "P0"
+    },
+    {
+      "id": "IR-ELIMINATED",
+      "state": "in_run.eliminated",
+      "event": "player_eliminated",
+      "uiResponse": "Lock controls and begin post-match transition.",
+      "copy": "Eliminated",
+      "priority": "P0"
+    },
+    {
+      "id": "IR-RECONNECT-SUCCESS",
+      "state": "in_run.hud_active",
+      "event": "reconnect_success_in_grace",
+      "uiResponse": "Restore control and show recovery toast.",
+      "copy": "Reconnected",
+      "priority": "P2"
+    },
+    {
+      "id": "IR-RECONNECT-TIMEOUT",
+      "state": "in_run.eliminated",
+      "event": "reconnect_grace_expired",
+      "uiResponse": "Resolve elimination as disconnected cause.",
+      "copy": "Disconnected",
+      "priority": "P1"
+    },
+    {
+      "id": "PO-MATCH-END-COMMIT",
+      "state": "post_match.freeze",
+      "event": "match_end_committed",
+      "uiResponse": "Freeze gameplay for 0.8 seconds before summary card.",
+      "copy": "Match Complete",
+      "priority": "P1"
+    },
+    {
+      "id": "PO-RESULTS-SUMMARY",
+      "state": "post_match.results_summary",
+      "event": "results_card_render",
+      "uiResponse": "Render placement, rank delta, survival time, and actions.",
+      "copy": "Final Placement: #{placement}",
+      "priority": "P1"
+    },
+    {
+      "id": "PO-TIE-RENDER",
+      "state": "post_match.leaderboard_snapshot",
+      "event": "tied_placement_present",
+      "uiResponse": "Render tie notation on result and leaderboard rows.",
+      "copy": "T-{rank}",
+      "priority": "P1"
+    },
+    {
+      "id": "PO-PLAY-AGAIN-HOST",
+      "state": "post_match.route_choice",
+      "event": "play_again_host",
+      "uiResponse": "Start rematch ready-check in same lobby.",
+      "copy": "Play Again",
+      "priority": "P2"
+    },
+    {
+      "id": "PO-BACK-TO-LOBBY",
+      "state": "post_match.route_choice",
+      "event": "back_to_lobby",
+      "uiResponse": "Return user to same lobby room context.",
+      "copy": "Back to Lobby",
+      "priority": "P2"
+    },
+    {
+      "id": "PO-EXIT-MENU",
+      "state": "post_match.route_choice",
+      "event": "exit_to_menu",
+      "uiResponse": "Leave room and clear rematch intent.",
+      "copy": "Exit to Menu",
+      "priority": "P2"
+    }
+  ],
+  "parityAcceptance": {
+    "preMatch": [
+      "Queue fallback copy and CTA labels match exactly on desktop and mobile.",
+      "Readiness status vocabulary is identical across right-rail and bottom-sheet roster layouts.",
+      "Countdown lock timing and disconnect pause cap are identical across platforms."
+    ],
+    "urgentAlerts": [
+      "Priority preemption ordering (P0 over P1 and P2) is identical on desktop and mobile.",
+      "Dwell timing parity: P0=1.8s, P1=1.5s, P2=1.2s.",
+      "Alert placement can adapt for safe areas, but P0 remains highest visual priority on both."
+    ],
+    "postMatch": [
+      "Results summary card includes the same mandatory data fields across platforms.",
+      "Tie labels use the same token format in end-card and leaderboard contexts.",
+      "CTA labels and resulting routes are identical even when layout differs."
+    ]
+  }
+}

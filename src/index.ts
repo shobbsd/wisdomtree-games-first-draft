@@ -1,6 +1,85 @@
+import { join } from "node:path";
+
+export {
+  AuthoritativeMatchSessionService,
+  replayAuthoritativeMatchSessionLog,
+} from "./core/authoritative-match-session-service.js";
+export type {
+  AuthoritativeMatchSessionServiceOptions,
+  CreateMatchInput,
+  MatchClientIntent,
+  MatchEventLogEntry,
+  MatchRuntimeState,
+  MatchSeedPlayer,
+  ReplayVerification,
+  SubmitIntentResult,
+} from "./core/authoritative-match-session-service.js";
 import { SessionManager } from "./core/session-manager.js";
 import { LeaderboardService } from "./leaderboard/leaderboard-service.js";
+import { FileDurableStateStore } from "./persistence/file-durable-state-store.js";
 import { InMemoryEventSink } from "./telemetry/event-sink.js";
+export { HttpRoomTransport } from "./transport/http-room-transport.js";
+
+export {
+  PRIORITY_DWELL_MS,
+  PriorityMessageChannel,
+  createQueueTimeoutFallback,
+} from "./ux/priority-message-channel.js";
+export {
+  WIS215_FIRST_SESSION_ONBOARDING_CUES,
+  WIS215_FIRST_SESSION_ONBOARDING_ORDER,
+  isWis215FirstSessionOnboardingCueId,
+} from "./ux/wis215-first-session-onboarding-contract.js";
+export {
+  WIS511_EVENT_SCHEMAS,
+  WIS511_EVENT_TYPES,
+  WIS511_REQUIRED_ANALYTICS_EVENT_SET,
+  WIS511_SCHEMA_REGISTRY_VERSION,
+  WIS511_SESSION_IDENTITY_TOKEN_SCHEMA_ID,
+  isSessionIdentityTokenClaimsV1,
+  parseSessionIdentityTokenClaimsV1,
+  validateEventPayload,
+  validateRequiredAnalyticsEventSet,
+  validateSessionIdentityTokenClaimsV1,
+} from "./contracts/wis511-session-identity-event-schema-registry.js";
+export {
+  DEFAULT_SESSION_INTEGRITY_CONFIG,
+  INTEGRITY_RULE_IDS,
+  resolveSessionIntegrityConfig,
+} from "./core/session-integrity.js";
+export type {
+  ActivePriorityChannelMessage,
+  MessagePriority,
+  PriorityChannelMessage,
+  PriorityChannelSnapshot,
+  QueueTimeoutFallback,
+  QueueTimeoutFallbackPayload,
+} from "./ux/priority-message-channel.js";
+export type { Wis215FirstSessionOnboardingCueId } from "./ux/wis215-first-session-onboarding-contract.js";
+export type {
+  AnalyticsEventRequirement,
+  EventPayloadValidationResult,
+  EventSchemaDefinition,
+  RequiredEventSetValidationResult,
+  SchemaValidationIssue,
+  SchemaValidationResult,
+  SessionIdentityTokenClaimsV1,
+} from "./contracts/wis511-session-identity-event-schema-registry.js";
+export type {
+  IntegrityAction,
+  IntegrityCategory,
+  IntegritySeverity,
+  RuntimeIntegrityViolation,
+  SessionIntegrityConfig,
+} from "./core/session-integrity.js";
+export {
+  FileDurableStateStore,
+} from "./persistence/file-durable-state-store.js";
+export type {
+  DurableStateStore,
+  PersistedMatchFinalEvent,
+  PersistedSessionSnapshot,
+} from "./persistence/file-durable-state-store.js";
 
 export interface BaselineRuntime {
   sessions: SessionManager;
@@ -8,10 +87,19 @@ export interface BaselineRuntime {
   events: InMemoryEventSink;
 }
 
-export function createBaselineRuntime(): BaselineRuntime {
+export interface BaselineRuntimeOptions {
+  durableStateFilePath?: string | null;
+}
+
+export function createBaselineRuntime(options: BaselineRuntimeOptions = {}): BaselineRuntime {
   const events = new InMemoryEventSink();
-  const leaderboard = new LeaderboardService({ eventSink: events });
-  const sessions = new SessionManager({ eventSink: events, leaderboard });
+  const stateFilePath =
+    options.durableStateFilePath === undefined
+      ? join(process.cwd(), ".runtime", "durable-state.json")
+      : options.durableStateFilePath;
+  const durableStore = stateFilePath ? new FileDurableStateStore({ filePath: stateFilePath }) : undefined;
+  const leaderboard = new LeaderboardService({ eventSink: events, durableStore });
+  const sessions = new SessionManager({ eventSink: events, leaderboard, durableStore });
 
   return {
     sessions,

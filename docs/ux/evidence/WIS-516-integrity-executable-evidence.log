@@ -1,0 +1,21 @@
+# WIS-516 Executable Integrity Evidence
+timestamp_utc=2026-04-24T10:43:06Z
+
+$ npm test -- tests/multiplayer-session.test.ts tests/authoritative-match-session-service.test.ts tests/flow-state-contract.test.ts tests/wis511-session-identity-event-schema-registry.test.ts tests/http-room-transport.test.ts
+
+> multiplayer-core-loop-baseline@0.1.0 test
+> vitest run tests/multiplayer-session.test.ts tests/authoritative-match-session-service.test.ts tests/flow-state-contract.test.ts tests/wis511-session-identity-event-schema-registry.test.ts tests/http-room-transport.test.ts
+
+✓ tests/multiplayer-session.test.ts (10 tests)
+✓ tests/authoritative-match-session-service.test.ts (5 tests)
+✓ tests/flow-state-contract.test.ts (29 tests)
+✓ tests/wis511-session-identity-event-schema-registry.test.ts (4 tests)
+✓ tests/http-room-transport.test.ts (9 tests)
+
+Test Files  5 passed (5)
+Tests       57 passed (57)
+
+$ npm run build
+
+> multiplayer-core-loop-baseline@0.1.0 build
+> tsc --project tsconfig.json

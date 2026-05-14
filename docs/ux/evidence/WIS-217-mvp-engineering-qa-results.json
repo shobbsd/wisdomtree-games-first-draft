@@ -1,0 +1,98 @@
+{
+  "issue": "WIS-217",
+  "runTimestampUtc": "2026-04-15T12:54:02Z",
+  "workspaceCommit": "c606883d65bba6b276cd22a11728a8860606d7b7",
+  "matrixLogPath": "docs/ux/evidence/WIS-217-mvp-engineering-qa-test-run.log",
+  "fullSuiteResult": {
+    "id": "REG-01",
+    "name": "post-dependency full regression suite",
+    "command": "npm test",
+    "status": "pass",
+    "testFilesPassed": 12,
+    "testsPassed": 62,
+    "testsFailed": 0,
+    "logSection": "full_regression_suite"
+  },
+  "scenarioResults": [
+    {
+      "id": "SYNC-01",
+      "name": "multiplayer sync convergence transport contract",
+      "command": "npm test -- tests/http-room-transport.test.ts",
+      "status": "pass",
+      "testsPassed": 4,
+      "testsFailed": 0,
+      "logSection": "sync_convergence_http_transport"
+    },
+    {
+      "id": "RISE-01",
+      "name": "rising-ground escalation/elimination deterministic ordering",
+      "command": "npm test -- tests/wis135-rising-ground-contract.test.ts tests/wis209-rising-ground-determinism.test.ts",
+      "status": "pass",
+      "testsPassed": 5,
+      "testsFailed": 0,
+      "logSection": "rising_ground_contract"
+    },
+    {
+      "id": "LB-01",
+      "name": "leaderboard integrity + mismatch quarantine contract",
+      "command": "npm test -- tests/leaderboard-service.test.ts tests/durability-recovery.test.ts",
+      "status": "pass",
+      "testsPassed": 11,
+      "testsFailed": 0,
+      "logSection": "leaderboard_integrity_quarantine"
+    },
+    {
+      "id": "UAT-01",
+      "name": "UAT telemetry lifecycle evidence determinism",
+      "command": "npm test -- tests/wis193-uat-telemetry-evidence.test.ts",
+      "status": "pass",
+      "testsPassed": 1,
+      "testsFailed": 0,
+      "logSection": "uat_lifecycle_evidence"
+    }
+  ],
+  "stabilityResult": {
+    "id": "SYNC-STAB-10",
+    "name": "http transport contract repeatability",
+    "command": "npm test -- tests/http-room-transport.test.ts",
+    "repeats": 10,
+    "passRuns": 10,
+    "failRuns": 0,
+    "status": "pass",
+    "logSections": [
+      "transport_stability_run_1",
+      "transport_stability_run_2",
+      "transport_stability_run_3",
+      "transport_stability_run_4",
+      "transport_stability_run_5",
+      "transport_stability_run_6",
+      "transport_stability_run_7",
+      "transport_stability_run_8",
+      "transport_stability_run_9",
+      "transport_stability_run_10"
+    ]
+  },
+  "defectTriage": {
+    "blocker": [],
+    "polish": [],
+    "nonBlockingObservations": [
+      "npm emitted local env warnings for unknown config keys auto-install-peers/recursive during test execution; no product behavior impact observed in matrix scope."
+    ]
+  },
+  "dependencySnapshot": [
+    {
+      "issue": "WIS-209",
+      "status": "done"
+    },
+    {
+      "issue": "WIS-210",
+      "status": "done"
+    }
+  ],
+  "gateDecision": {
+    "matrixStatus": "pass",
+    "releaseReadiness": "ready_for_hardening_gate",
+    "reason": "All post-dependency matrix scenarios and full regression suite passed with zero blocker defects.",
+    "handoffIssue": "WIS-218"
+  }
+}

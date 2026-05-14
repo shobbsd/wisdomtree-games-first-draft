@@ -5,8 +5,17 @@
   "type": "module",
   "scripts": {
     "dev": "tsx src/index.ts",
+    "play": "tsx src/playable/terminal-playable.ts",
+    "play:browser": "tsx src/playable/browser-playable.ts",
     "build": "tsc --project tsconfig.json",
-    "test": "vitest run"
+    "test": "vitest run",
+    "uat:profile": "tsx src/uat/cli.ts profile",
+    "uat:serve": "tsx src/uat/cli.ts serve",
+    "uat:reset": "tsx src/uat/cli.ts reset",
+    "uat:seed": "tsx src/uat/cli.ts seed",
+    "uat:evidence:wis193": "tsx src/uat/wis193-telemetry-evidence.ts",
+    "uat:start": "bash scripts/uat-start.sh",
+    "uat:stop": "bash scripts/uat-stop.sh"
   },
   "devDependencies": {
     "@types/node": "^22.13.9",

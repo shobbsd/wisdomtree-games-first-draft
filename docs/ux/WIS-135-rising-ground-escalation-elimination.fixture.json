@@ -1,0 +1,65 @@
+{
+  "version": "1.0.0",
+  "issue": "WIS-135",
+  "generatedAt": "2026-04-14",
+  "states": [
+    "RG-NORMAL",
+    "RG-WARNING",
+    "RG-CRITICAL",
+    "RG-ELIMINATED"
+  ],
+  "events": [
+    "rg.state.normal.enter",
+    "rg.state.warning.enter",
+    "rg.state.critical.enter",
+    "rg.state.deescalate",
+    "rg.elimination.triggered",
+    "rg.elimination.actions_shown",
+    "rg.elimination.auto_route"
+  ],
+  "copy": {
+    "normal": "Danger low. Keep climbing.",
+    "warning": "Ground rising faster. Move up.",
+    "critical": "Critical danger. Climb now.",
+    "eliminated": {
+      "status": "Eliminated. Finalizing your placement...",
+      "cause": "Rising ground caught you.",
+      "helper": "You can spectate now or view results.",
+      "actions": ["Spectate", "View Leaderboard"]
+    }
+  },
+  "timingMs": {
+    "warningMinDwell": 1500,
+    "criticalMinDwell": 1800,
+    "eliminationImpact": 1200,
+    "eliminationAutoRoute": 6000,
+    "sameTierDebounce": 300
+  },
+  "assertions": [
+    {
+      "id": "a1-order",
+      "name": "state_order",
+      "expect": [
+        "RG-NORMAL",
+        "RG-WARNING",
+        "RG-CRITICAL",
+        "RG-ELIMINATED"
+      ]
+    },
+    {
+      "id": "a2-preempt",
+      "name": "critical_and_elimination_preempt_rank_toasts",
+      "expect": true
+    },
+    {
+      "id": "a3-elim-cta",
+      "name": "elimination_shows_action_by_1200ms",
+      "expect": true
+    },
+    {
+      "id": "a4-elim-autoroute",
+      "name": "elimination_auto_routes_by_6000ms_without_input",
+      "expect": true
+    }
+  ]
+}
