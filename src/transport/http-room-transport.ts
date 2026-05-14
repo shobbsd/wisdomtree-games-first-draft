@@ -50,6 +50,8 @@ interface SyncMismatchResponse {
 }
 
 const MAX_SYNC_TICK_DELTA = 2;
+const DEFAULT_STANDINGS_LIMIT = 10;
+const MAX_STANDINGS_LIMIT = 50;
 
 export class HttpRoomTransport {
   private readonly sessions: SessionManager;
@@ -158,6 +160,11 @@ export class HttpRoomTransport {
       return;
     }
 
+    if (method === "GET" && pathSegments.length === 2 && pathSegments[0] === "v1" && pathSegments[1] === "leaderboard") {
+      await this.handleLeaderboard(url, response);
+      return;
+    }
+
     if (pathSegments.length < 2 || pathSegments[0] !== "v1" || pathSegments[1] !== "rooms") {
       this.respondError(response, 404, "not_found");
       return;
@@ -218,6 +225,21 @@ export class HttpRoomTransport {
 
     if (method === "GET" && action === "flow-state") {
       await this.handleFlowState(sessionId, response);
+      return;
+    }
+
+    if (method === "POST" && action === "elimination" && pathSegments.length === 5 && pathSegments[4] === "action") {
+      await this.handleEliminationAction(sessionId, request, response);
+      return;
+    }
+
+    if (method === "POST" && action === "post-match" && pathSegments.length === 5 && pathSegments[4] === "action") {
+      await this.handlePostMatchAction(sessionId, request, response);
+      return;
+    }
+
+    if (method === "POST" && action === "results" && pathSegments.length === 5 && pathSegments[4] === "ack") {
+      await this.handleResultsAck(sessionId, request, response);
       return;
     }
 
@@ -451,7 +473,14 @@ export class HttpRoomTransport {
         this.respondJson(response, 409, mismatch);
         return;
       }
-      const result = this.sessions.completeRoom(sessionId, { recordedAt });
+      const result = this.sessions.completeRoom(sessionId, {
+        recordedAt,
+        commitLatencyMs: optionalNumber(body, "commitLatencyMs"),
+        retryAttempt: optionalNumber(body, "retryAttempt"),
+        retryMaxAttempts: optionalNumber(body, "retryMaxAttempts"),
+        commitFailedTerminal: optionalBoolean(body, "commitFailedTerminal"),
+        failureAcknowledged: optionalBoolean(body, "failureAcknowledged"),
+      });
       this.respondJson(response, 200, {
         ...result,
         sync: this.sessions.getSyncAnchor(sessionId),
@@ -465,6 +494,73 @@ export class HttpRoomTransport {
     try {
       const flowState: RoomFlowState = this.sessions.getFlowState(sessionId);
       this.respondJson(response, 200, flowState);
+    } catch (error) {
+      this.respondKnownError(response, error);
+    }
+  }
+
+  private async handleLeaderboard(url: URL, response: ServerResponse): Promise<void> {
+    try {
+      const rawLimit = Number.parseInt(url.searchParams.get("limit") ?? "", 10);
+      const limit = Number.isFinite(rawLimit)
+        ? Math.max(1, Math.min(rawLimit, MAX_STANDINGS_LIMIT))
+        : DEFAULT_STANDINGS_LIMIT;
+      this.respondJson(response, 200, {
+        standings: this.sessions.getStandings(limit),
+      });
+    } catch (error) {
+      this.respondKnownError(response, error);
+    }
+  }
+
+  private async handleEliminationAction(
+    sessionId: string,
+    request: IncomingMessage,
+    response: ServerResponse,
+  ): Promise<void> {
+    try {
+      const body = await readJsonBody(request);
+      const actionId = requireString(
+        body,
+        "actionId",
+      ) as Parameters<SessionManager["selectEliminationAction"]>[1];
+      const nowMs = optionalNumber(body, "nowMs") ?? this.now();
+      const selected = this.sessions.selectEliminationAction(sessionId, actionId, nowMs);
+      this.respondJson(response, 200, selected);
+    } catch (error) {
+      this.respondKnownError(response, error);
+    }
+  }
+
+  private async handlePostMatchAction(
+    sessionId: string,
+    request: IncomingMessage,
+    response: ServerResponse,
+  ): Promise<void> {
+    try {
+      const body = await readJsonBody(request);
+      const actionId = requireString(
+        body,
+        "actionId",
+      ) as Parameters<SessionManager["selectPostMatchAction"]>[1];
+      const nowMs = optionalNumber(body, "nowMs") ?? this.now();
+      const selected = this.sessions.selectPostMatchAction(sessionId, actionId, nowMs);
+      this.respondJson(response, 200, selected);
+    } catch (error) {
+      this.respondKnownError(response, error);
+    }
+  }
+
+  private async handleResultsAck(
+    sessionId: string,
+    request: IncomingMessage,
+    response: ServerResponse,
+  ): Promise<void> {
+    try {
+      const body = await readJsonBody(request);
+      const nowMs = optionalNumber(body, "nowMs") ?? this.now();
+      const lifecycle = this.sessions.acknowledgeResultsFailure(sessionId, nowMs);
+      this.respondJson(response, 200, lifecycle);
     } catch (error) {
       this.respondKnownError(response, error);
     }
@@ -821,6 +917,18 @@ function optionalNumber(body: Record<string, unknown>, key: string): number | un
   }
   if (typeof value !== "number" || !Number.isFinite(value)) {
     throw new Error(`${key} must be number`);
+  }
+
+  return value;
+}
+
+function optionalBoolean(body: Record<string, unknown>, key: string): boolean | undefined {
+  const value = body[key];
+  if (value === undefined) {
+    return undefined;
+  }
+  if (typeof value !== "boolean") {
+    throw new Error(`${key} must be boolean`);
   }
 
   return value;

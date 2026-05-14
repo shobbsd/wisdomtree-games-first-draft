@@ -1270,6 +1270,10 @@ export class SessionManager {
     return flowState;
   }
 
+  getStandings(limit = 10): ReturnType<LeaderboardService["getStandings"]> {
+    return this.leaderboard.getStandings(limit);
+  }
+
   private buildAccessibilityContract(state: RoomFlowState): AccessibilityRuntimeContract {
     const hudAnnouncement = resolveWis216AnnouncementPolicy({
       uxStateId: state.uxState.id,

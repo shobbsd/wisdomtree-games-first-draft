@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: multiplayer-api
+    runtime: node
+    plan: starter
+    buildCommand: npm install && npm run build
+    startCommand: npm run uat:serve
+    healthCheckPath: /health
+    disk:
+      name: runtime
+      mountPath: /opt/render/project/src/.runtime
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: UAT_HTTP_HOST
+        value: 0.0.0.0
+      - key: UAT_AUTH_TOKEN_SECRET
+        sync: false
+
+  - type: web
+    name: multiplayer-ui
+    runtime: node
+    plan: starter
+    buildCommand: npm install && npm run build
+    startCommand: npm run play:browser
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PLAYABLE_HOST
+        value: 0.0.0.0
+      - key: PLAYABLE_TRANSPORT_PROXY_TARGET
+        fromService:
+          name: multiplayer-api
+          type: web
+          property: hostport

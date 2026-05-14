@@ -55,7 +55,7 @@ export interface UatRuntimeProfile {
 
 export function resolveUatRuntimeProfile(env: NodeJS.ProcessEnv = process.env): UatRuntimeProfile {
   const host = (env.UAT_HTTP_HOST ?? "127.0.0.1").trim() || "127.0.0.1";
-  const port = parsePositiveInteger(env.UAT_HTTP_PORT, 4310);
+  const port = parsePositiveInteger(env.UAT_HTTP_PORT ?? env.PORT, 4310);
   const authTokenSecret = env.UAT_AUTH_TOKEN_SECRET ?? "uat-local-auth-secret";
   const authTokenTtlMs = parsePositiveInteger(env.UAT_AUTH_TOKEN_TTL_MS, 60 * 60 * 1_000);
   const runtimeDir = resolve(env.UAT_RUNTIME_DIR ?? resolve(process.cwd(), ".runtime", "uat"));

@@ -790,6 +790,181 @@ describe("HttpRoomTransport", () => {
     expect(body.error).toBe("unauthorized");
     expect(unauthorizedInput.headers.get("access-control-allow-origin")).toBe("*");
   });
+
+  it("exposes leaderboard and route-action endpoints for split browser shells", async () => {
+    const eventSink = new InMemoryEventSink();
+    const leaderboard = new LeaderboardService({ eventSink });
+    const sessions = new SessionManager({ eventSink, leaderboard });
+    transport = new HttpRoomTransport({
+      sessions,
+      authTokenSecret: "transport-test-secret",
+      now: () => 0,
+    });
+    await transport.start({ port: 0 });
+
+    const baseUrl = transport.baseUrl();
+
+    await requestJson(`${baseUrl}/v1/rooms`, {
+      method: "POST",
+      body: {
+        sessionId: "room-post-match-http",
+        nowMs: 0,
+      },
+    });
+    await requestJson(`${baseUrl}/v1/rooms/room-post-match-http/players`, {
+      method: "POST",
+      body: {
+        playerId: "alpha",
+        nowMs: 10,
+        spawnHeight: 9,
+      },
+    });
+    await requestJson(`${baseUrl}/v1/rooms/room-post-match-http/players`, {
+      method: "POST",
+      body: {
+        playerId: "beta",
+        nowMs: 20,
+        spawnHeight: 8.5,
+      },
+    });
+    await requestJson(`${baseUrl}/v1/rooms/room-post-match-http/advance`, {
+      method: "POST",
+      body: { deltaMs: 100, nowMs: 150, sync: await getSyncAnchor(baseUrl, "room-post-match-http") },
+    });
+    await requestJson(`${baseUrl}/v1/rooms/room-post-match-http/complete`, {
+      method: "POST",
+      body: {
+        recordedAt: 900,
+        commitLatencyMs: 8_200,
+        retryAttempt: 4,
+        retryMaxAttempts: 4,
+        commitFailedTerminal: true,
+        failureAcknowledged: false,
+        sync: await getSyncAnchor(baseUrl, "room-post-match-http"),
+      },
+    });
+
+    const leaderboardResponse = await requestJson<{ standings: Array<{ playerId: string }> }>(
+      `${baseUrl}/v1/leaderboard?limit=10`,
+      {
+        method: "GET",
+      },
+    );
+    expect(leaderboardResponse.status).toBe(200);
+    expect(leaderboardResponse.body.standings.map((entry) => entry.playerId)).toEqual(["alpha", "beta"]);
+
+    const blockedReplay = await requestJson<{ blocked: boolean; reason: string }>(
+      `${baseUrl}/v1/rooms/room-post-match-http/post-match/action`,
+      {
+        method: "POST",
+        body: {
+          actionId: "REPLAY_MATCH",
+          nowMs: 1_000,
+        },
+      },
+    );
+    expect(blockedReplay.status).toBe(200);
+    expect(blockedReplay.body.blocked).toBe(true);
+    expect(blockedReplay.body.reason).toBe("results_failure_ack_required");
+
+    const acknowledged = await requestJson<{ acknowledged: boolean; rematchEnabled: boolean }>(
+      `${baseUrl}/v1/rooms/room-post-match-http/results/ack`,
+      {
+        method: "POST",
+        body: {
+          nowMs: 1_020,
+        },
+      },
+    );
+    expect(acknowledged.status).toBe(200);
+    expect(acknowledged.body.acknowledged).toBe(true);
+    expect(acknowledged.body.rematchEnabled).toBe(true);
+
+    const selectedPostMatch = await requestJson<{ actionId: string; routeTarget: string; reason: string }>(
+      `${baseUrl}/v1/rooms/room-post-match-http/post-match/action`,
+      {
+        method: "POST",
+        body: {
+          actionId: "EXIT_TO_MENU",
+          nowMs: 1_030,
+        },
+      },
+    );
+    expect(selectedPostMatch.status).toBe(200);
+    expect(selectedPostMatch.body).toMatchObject({
+      actionId: "EXIT_TO_MENU",
+      routeTarget: "shell.main_menu",
+      reason: "player_selected",
+    });
+
+    await requestJson(`${baseUrl}/v1/rooms`, {
+      method: "POST",
+      body: {
+        sessionId: "room-elim-http",
+        nowMs: 0,
+        reconnectGraceMs: 1_000,
+      },
+    });
+    const alphaJoin = await requestJson<{ authToken: string }>(`${baseUrl}/v1/rooms/room-elim-http/players`, {
+      method: "POST",
+      body: {
+        playerId: "alpha",
+        nowMs: 10,
+        spawnHeight: 8,
+      },
+    });
+    await requestJson(`${baseUrl}/v1/rooms/room-elim-http/players`, {
+      method: "POST",
+      body: {
+        playerId: "beta",
+        nowMs: 20,
+        spawnHeight: 8,
+      },
+    });
+    await requestJson(`${baseUrl}/v1/rooms/room-elim-http/advance`, {
+      method: "POST",
+      body: { deltaMs: 100, nowMs: 100, sync: await getSyncAnchor(baseUrl, "room-elim-http") },
+    });
+    const disconnected = await requestJson<{ resumeToken: string }>(`${baseUrl}/v1/rooms/room-elim-http/disconnect`, {
+      method: "POST",
+      authToken: alphaJoin.body.authToken,
+      body: { nowMs: 200, sync: await getSyncAnchor(baseUrl, "room-elim-http") },
+    });
+    await requestJson(`${baseUrl}/v1/rooms/room-elim-http/advance`, {
+      method: "POST",
+      body: { deltaMs: 100, nowMs: 1_250, sync: await getSyncAnchor(baseUrl, "room-elim-http") },
+    });
+    await requestJson(`${baseUrl}/v1/rooms/room-elim-http/reconnect`, {
+      method: "POST",
+      authToken: alphaJoin.body.authToken,
+      body: {
+        resumeToken: disconnected.body.resumeToken,
+        nowMs: 1_260,
+        sync: await getSyncAnchor(baseUrl, "room-elim-http"),
+      },
+    });
+    await requestJson(`${baseUrl}/v1/rooms/room-elim-http/advance`, {
+      method: "POST",
+      body: { deltaMs: 100, nowMs: 2_451, sync: await getSyncAnchor(baseUrl, "room-elim-http") },
+    });
+
+    const selectedElimination = await requestJson<{ actionId: string; routeTarget: string; reason: string }>(
+      `${baseUrl}/v1/rooms/room-elim-http/elimination/action`,
+      {
+        method: "POST",
+        body: {
+          actionId: "VIEW_RESULTS",
+          nowMs: 2_500,
+        },
+      },
+    );
+    expect(selectedElimination.status).toBe(200);
+    expect(selectedElimination.body).toMatchObject({
+      actionId: "VIEW_RESULTS",
+      routeTarget: "results_screen",
+      reason: "player_selected",
+    });
+  });
 });
 
 interface RequestJsonOptions {
